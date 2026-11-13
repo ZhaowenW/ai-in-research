@@ -254,6 +254,26 @@ main.wrap{padding-top:20px;padding-bottom:64px}
 .stats{gap:28px 32px}
 .stat{background:transparent;border:0;border-top:2px solid var(--ink);border-radius:0;padding:14px 0 0}
 [data-view="home"] > p.muted a{font-weight:600}
+
+/* Header: wordmark only, one line; tagline lives in the home hero */
+.brand{flex:0 0 auto!important;justify-content:center}
+.brand b{font-size:1.3rem;white-space:nowrap}
+.kicker{margin:0 0 14px;font-size:1.05rem;font-weight:600;color:var(--accent);letter-spacing:-.005em}
+/* Key stats grouped by question; flat, no card treatment */
+.statcols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 32px}
+@media (max-width:900px){.statcols{grid-template-columns:1fr}}
+.statcol{display:flex;flex-direction:column;border-top:2px solid var(--ink);padding-top:14px}
+.sc-head{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink);padding-bottom:14px}
+.sc-q{align-self:flex-start;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:4px 12px;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+.sc-take{font-family:var(--font-display);font-weight:700;font-size:1.15rem;line-height:1.25;letter-spacing:-.015em}
+.sc-head:hover .sc-take{color:var(--accent)}
+.sc-stat{display:flex;flex-direction:column;gap:6px;padding:14px 0;border-top:1px solid var(--rule)}
+.sc-stat:last-child{padding-bottom:0}
+.sc-stat .num{font-family:var(--font-display);font-weight:700;letter-spacing:-.022em;font-size:2rem;line-height:1;font-variant-numeric:tabular-nums}
+.sc-stat p{margin:0;font-size:.92rem}
+.sc-stat .src{font-size:.78rem;color:var(--muted)}
+
+.study .coi{margin:10px 0 0;padding:8px 12px;border-left:3px solid var(--warn,#b7791f);background:var(--paper,#f6f6f4);font-size:.86rem;border-radius:0 8px 8px 0}
 </style>
 </head>
 <body>
@@ -261,7 +281,6 @@ main.wrap{padding-top:20px;padding-bottom:64px}
   <div class="wrap bar">
     <a class="brand" href="#home" aria-label="Proof and Wonder, home">
       <b>Proof and Wonder</b>
-      <span>A review of how AI shapes market research, marketing communications, and more</span>
     </a>
     <nav class="main" aria-label="Sections">
       <a href="#research">AI in Audience Research</a>
@@ -279,7 +298,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
 <!-- ============ HOME ============ -->
 <section class="view" id="view-home" data-view="home">
   <div class="hero">
-    <span class="eyebrow"><span data-count="all">52</span> studies · Updated November 2026</span>
+    <p class="kicker">A review of how AI shapes market research, marketing communications, and more</p>
     <h1>What does the evidence actually say about AI and audiences?</h1>
     <p class="lede">This site reviews the published research on AI and audiences for insights and marketing communications leaders. It doesn't run new studies. Instead, it reads the ones that exist, grades how much weight each can bear and translates the findings into positions you can act on, organized around three questions.</p>
   </div>
@@ -322,16 +341,25 @@ main.wrap{padding-top:20px;padding-bottom:64px}
   <p class="muted read" style="font-size:.92rem;margin-top:16px">Every study carries an evidence grade, every use case carries a verdict, and every verdict names the evidence that would change it. The <a href="#library">Study library</a> lists all <span data-count="all">52</span> studies, and the <a href="#method">Method</a> page explains how they're graded.</p>
 
   <div class="block stack">
-    <span class="eyebrow">Key stats · Six figures from the studies</span>
-    <div class="stats">
-      <div class="stat"><span class="num">3 to 30 pts</span><span class="lbl">How far synthetic respondents missed a real survey: about 3 points on national political results, but up to 30 points for the smallest subgroups</span><span class="src">Verasight reports I and IV, 2025–26 · Grade C</span></div>
-      <div class="stat"><span class="num">r = 0.85</span><span class="lbl">Correlation between AI-predicted and actual effects across 70 survey experiments, although the AI overestimated how big the effects were</span><span class="src">Ashokkumar, Hewitt et al. · Figure from the 2024 preprint · Grade A</span></div>
-      <div class="stat"><span class="num">+25 pts</span><span class="lbl">Accuracy advantage of AI text coding over crowd workers, averaged across four datasets</span><span class="src">Gilardi et al., PNAS 2023 · Grade A</span></div>
-      <div class="stat"><span class="num">−79.7%</span><span class="lbl">Drop in purchase rate when a sales chatbot revealed it was a bot before the call, in a field experiment with 6,200+ customers</span><span class="src">Luo et al., Marketing Science 2019 · Grade A</span></div>
-      <div class="stat"><span class="num">−31.5%</span><span class="lbl">Drop in click-through rate when display ads carried an AI label, in a four-month field test</span><span class="src">Lee et al., working paper 2025 · Figure from news coverage · Grade B</span></div>
-      <div class="stat"><span class="num">76%</span><span class="lbl">Share of US adults who say it's extremely or very important to know whether content was made by AI or by people, even though 53% doubt they could tell</span><span class="src">Pew Research Center, June 2025 · Grade B</span></div>
+    <span class="eyebrow">Key stats · Two numbers for each question</span>
+    <div class="statcols">
+      <article class="statcol">
+        <a class="sc-head" href="#research"><span class="sc-q">AI in Audience Research</span><span class="sc-take">Reliable for reading text, not for subgroups</span></a>
+        <div class="sc-stat"><span class="num">+25 pts</span><p>Accuracy advantage of AI text coding over crowd workers, averaged across four datasets</p><span class="src">Gilardi et al., PNAS 2023 · Grade A</span></div>
+        <div class="sc-stat"><span class="num">Up to 30 pts</span><p>Error of synthetic respondents for the smallest subgroups, versus about 3 points for national political toplines</p><span class="src">Verasight reports, 2025–26 · Grade C</span></div>
+      </article>
+      <article class="statcol">
+        <a class="sc-head" href="#disclosure"><span class="sc-q">Reactions to AI Disclosure</span><span class="sc-take">Audiences want to know, but knowing has a cost</span></a>
+        <div class="sc-stat"><span class="num">76%</span><p>Share of US adults who say it's extremely or very important to know whether content was made by AI or by people</p><span class="src">Pew Research Center, 2025 · Grade B</span></div>
+        <div class="sc-stat"><span class="num">−79.7%</span><p>Drop in purchase rate when a sales chatbot revealed it was a bot before the call, among 6,200+ customers</p><span class="src">Luo et al., Marketing Science 2019 · Grade A</span></div>
+      </article>
+      <article class="statcol">
+        <a class="sc-head" href="#history"><span class="sc-q">Industry History</span><span class="sc-take">When a method weakens, volume moves fast</span></a>
+        <div class="sc-stat"><span class="num">36% → 6%</span><p>Response rate of a typical Pew telephone survey, 1997 to 2018</p><span class="src">Pew Research Center, 2012 and 2019</span></div>
+        <div class="sc-stat"><span class="num">56% → 84%</span><p>Share of national US polls using online methods, 2016 to 2020</p><span class="src">Pew Research Center, 2023</span></div>
+      </article>
     </div>
-    <p class="muted read" style="font-size:.9rem">These figures come from different study designs and use different measures, so we don't average them. The <a href="#method">Method</a> page explains why.</p>
+    <p class="muted read" style="font-size:.9rem">Each pair shows the tension behind one question. The figures use different measures, so we don't compare or average them across studies; the <a href="#method">Method</a> page explains why.</p>
   </div>
 </section>
 
@@ -352,7 +380,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
     <div class="panel">
       <h3>Key takeaways</h3>
       <ul class="clean">
-        <li><strong>Coding is the safest use.</strong> AI beat crowd workers on defined categories, and applied an existing codebook far more reliably than it invented a new one.</li>
+        <li><strong>Coding is the safest use.</strong> AI beat crowd workers on defined categories and applied an existing codebook far more reliably than it invented a new one, though accuracy still varied from task to task.</li>
         <li><strong>Rankings travel; magnitudes don't.</strong> AI-simulated experiments ranked real effects well but overstated their size.</li>
         <li><strong>Averages hide the problem.</strong> Synthetic toplines can land close while variance, relationships and subgroups miss badly.</li>
         <li><strong>Your own data is the multiplier.</strong> Models fine-tuned on real answers to the same questions performed far better than models asked to imagine new ones.</li>
@@ -363,11 +391,11 @@ main.wrap{padding-top:20px;padding-bottom:64px}
   <div class="block stack">
     <span class="eyebrow">Five levels of detail · Each asks more of the AI · Verdicts are our assessment</span>
     <div class="ladder">
-      <div class="rung"><span class="n">01</span><div><h3>Collect and code open text</h3><p class="what">Open-ended survey answers, annotation, codebook-based interview coding, AI-moderated interviews</p></div><div class="v"><span class="chip use">Use</span></div><p class="why">AI was more accurate than crowd workers on defined categories and applied human codebooks with high agreement, but it was much weaker at inventing its own codes. AI moderation held up for structured interviews while lagging expert moderators on rapport and unexpected insight. Check a human-coded sample either way.<span class="cites">Gilardi 2023 · Törnberg 2023 · Jennings 2026 · Zhang 2025 · Wuttke 2025 · Ipsos 2025 · Arora 2025</span></p></div>
-      <div class="rung"><span class="n">02</span><div><h3>Rank options</h3><p class="what">Which message, concept or treatment is stronger</p></div><div class="v"><span class="chip use">Use</span></div><p class="why">AI-predicted effects tracked actual effects closely (r = 0.85, preprint figure) and replicated several classic experiments, though they overstated effect sizes. Use AI to shorten a long list, then test the finalists with real people.<span class="cites">Ashokkumar/Hewitt 2026 · Aher 2023 · Maier 2025 · Li 2024</span></p></div>
-      <div class="rung"><span class="n">03</span><div><h3>Estimate whole-population results</h3><p class="what">What share of adults think or do something</p></div><div class="v"><span class="chip validate">Validate first</span></div><p class="why">Error ran about 3 points on heavily polled political questions but about 20 points on coffee questions. Willingness-to-pay and patience estimates were often off, sometimes in the wrong direction, and models didn't react to question wording the way people do. Results improved markedly when models were fine-tuned on real answers to the same questions.<span class="cites">Verasight 2025–26 · Bisbee 2024 · Brand 2025 · Goli 2024 · Tjuatja 2024 · Kim & Lee 2024</span></p></div>
-      <div class="rung"><span class="n">04</span><div><h3>Estimate the spread of opinion</h3><p class="what">Variance, intensity, minority views, knowledge and awareness</p></div><div class="v"><span class="chip notyet">Not yet</span></div><p class="why">Synthetic answers were consistently compressed, clustering around a few responses, drifting toward random once answer order was shuffled, or showing implausibly perfect knowledge. One new rating method narrowed the gap in a single product category.<span class="cites">Bisbee 2024 · Boelaert 2025 · Dominguez-Olmedo 2024 · Li, Li & Qiu 2025 · Aher 2023 · Wang 2025 · Maier 2025</span></p></div>
-      <div class="rung"><span class="n">05</span><div><h3>Estimate subgroups and relationships</h3><p class="what">Crosstabs, segment sizes, driver and regression analysis</p></div><div class="v"><span class="chip notyet">Not yet</span></div><p class="why">Error grew as groups got smaller, the same groups were missed again and again, regression results diverged from real data, and the pattern held in Germany as well as the US.<span class="cites">Verasight · Santurkar 2023 · Bisbee 2024 · Wang 2025 · Atari 2023 · von der Heyde 2025 · Boelaert 2025</span></p></div>
+      <div class="rung"><span class="n">01</span><div><h3>Collect and code open text</h3><p class="what">Open-ended survey answers, annotation, codebook-based interview coding, AI-moderated interviews</p></div><div class="v"><span class="chip use">Use</span></div><p class="why">AI was more accurate than crowd workers on defined categories, came within a point of a second human coder on survey open-ends and applied human codebooks with high agreement, but it was much weaker at inventing its own codes, and accuracy varied sharply from task to task. AI interviewers collected rich data for structured topics while lagging expert moderators on rapport and unexpected insight. Check a human-coded sample either way.<span class="cites">Gilardi 2023 · Törnberg 2023 · Mellon 2024 · Ziems 2024 · Pangakis 2023 · Jennings 2026 · Zhang 2025 · Wuttke 2025 · Chopra 2023 · Geiecke 2024 · Ipsos 2025 · Arora 2025</span></p></div>
+      <div class="rung"><span class="n">02</span><div><h3>Rank options</h3><p class="what">Which message, concept or treatment is stronger</p></div><div class="v"><span class="chip use">Use</span></div><p class="why">AI-predicted effects tracked actual effects closely (r = 0.85, preprint figure) and replicated the direction of several classic experiments, though they overstated effect sizes, and in simulated tests a change to one variable can quietly shift others. Use AI to shorten a long list, then test the finalists with real people.<span class="cites">Ashokkumar/Hewitt 2026 · Aher 2023 · Horton 2023 · Gui 2023 · Maier 2025 · Li 2024</span></p></div>
+      <div class="rung"><span class="n">03</span><div><h3>Estimate whole-population results</h3><p class="what">What share of adults think or do something</p></div><div class="v"><span class="chip validate">Validate first</span></div><p class="why">Error ran about 3 points on heavily polled political questions but about 20 points on coffee questions. Willingness-to-pay and patience estimates were often off, sometimes in the wrong direction, and models didn't react to question wording the way people do, while arbitrary prompt layout shifted their answers. Results improved markedly when models were given issue-specific survey data or fine-tuned on real answers to the same questions.<span class="cites">Verasight 2025–26 · Bisbee 2024 · Sanders 2023 · Lee 2024 · Brand 2025 · Goli 2024 · Tjuatja 2024 · Brucks 2025 · Kim & Lee 2024</span></p></div>
+      <div class="rung"><span class="n">04</span><div><h3>Estimate the spread of opinion</h3><p class="what">Variance, intensity, minority views, knowledge and awareness</p></div><div class="v"><span class="chip notyet">Not yet</span></div><p class="why">Synthetic answers were consistently compressed, clustering around a few responses, drifting toward random once answer order was shuffled, or showing implausibly perfect knowledge; even digital twins built from 500 answers per person were less spread out than real people on 94% of outcomes. One new rating method narrowed the gap in a single product category.<span class="cites">Bisbee 2024 · Boelaert 2025 · Dominguez-Olmedo 2024 · Li, Li & Qiu 2025 · Toubia 2025 · Aher 2023 · Wang 2025 · Maier 2025</span></p></div>
+      <div class="rung"><span class="n">05</span><div><h3>Estimate subgroups and relationships</h3><p class="what">Crosstabs, segment sizes, driver and regression analysis</p></div><div class="v"><span class="chip notyet">Not yet</span></div><p class="why">Error grew as groups got smaller, the same groups were missed again and again (younger, less educated, lower-income and minority respondents among them), regression results diverged from real data, and simulation worked best for the US and worst outside Western, English-speaking countries.<span class="cites">Verasight · Santurkar 2023 · Bisbee 2024 · Wang 2025 · Atari 2023 · Durmus 2023 · Sanders 2023 · Lee 2024 · Qu & Wang 2024 · Qi 2024 · von der Heyde 2025 · Boelaert 2025 · Toubia 2025</span></p></div>
     </div>
   </div>
 
@@ -408,6 +436,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
           <li>Toplines can match while the structure underneath fails, with variance and regression results diverging from real data (Bisbee 2024).</li>
           <li>Error grows as groups shrink (Verasight), and the same groups are missed across models and countries (Santurkar 2023; Atari 2023; von der Heyde 2025).</li>
           <li>Models voice outsiders' views of a group and flatten the variety within it (Wang 2025), and their biases shift unpredictably from topic to topic, so reweighting can't fix them (Boelaert 2025).</li>
+          <li>Even digital twins built from about 500 answers per person missed population means, compressed variation and simulated less educated, lower-income and politically extreme people worst (Toubia 2025).</li>
         </ul>
       </div>
       <p><strong>The strongest case against.</strong> Park et al. (2024) built simulated respondents from two-hour interviews with 1,052 real people and narrowed accuracy gaps between racial and ideological groups. Because each agent depends on a real person's interview, though, the method copies people you've already studied; it doesn't replace a sample.</p>
@@ -427,7 +456,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
     <div class="three">
       <div class="panel"><h3><span class="chip use">Use now</span></h3><ul class="clean">
         <li>Code open-ended answers and transcripts with AI, have a person code a sample of each wave, and compare the two.</li>
-        <li>Give AI your codebook rather than asking it to invent one.</li>
+        <li>Give AI your codebook rather than asking it to invent one, and validate each new codeframe separately.</li>
         <li>Draft discussion guides, screeners and message variants, and use AI to screen variants before testing the shortlist with people.</li></ul></div>
       <div class="panel"><h3><span class="chip validate">Validate first</span></h3><ul class="clean">
         <li>Whole-population estimates, benchmarked against your past survey results in the same category.</li>
@@ -435,7 +464,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
         <li>Models fine-tuned on your own survey history, tested on questions they haven't seen.</li></ul></div>
       <div class="panel"><h3><span class="chip notyet">Not yet</span></h3><ul class="clean">
         <li>Any number reported for a segment, demographic group or crosstab cell.</li>
-        <li>Questionnaire pretesting on synthetic respondents, since they don't react to wording the way people do.</li>
+        <li>Questionnaire pretesting on synthetic respondents, since they don't react to wording the way people do and shift with arbitrary prompt layout.</li>
         <li>Driver analysis, segment sizing, awareness measures, new categories and non-Western markets.</li></ul></div>
     </div>
   </div>
@@ -469,6 +498,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
       <span class="tag assess">Our take</span>
       <p>Telling people AI was involved lowered trust in nearly every controlled study we reviewed, and in both large field experiments it also cut clicks or purchases. Audiences want to know, though: three-quarters of US adults say it matters to them, and being exposed by someone else costs more than disclosing.</p>
       <p>The size of the penalty is far from fixed. It is largest for emotional messages, creative work and luxury brands, and when people assume AI did everything. It shrinks when the disclosure is specific, when people remain visibly in charge, and when AI handles the setting rather than the substance. Some of it, one study suggests, is less an aversion to AI than a bonus audiences give to human effort.</p>
+      <p>The penalty is also narrower than it first appears. It lands mainly on trust in the sender and on how accurate the content seems; in two large experiments, including one with a UK probability sample, an AI label didn't make a message less persuasive or change people's policy views.</p>
     </div>
     <div class="panel">
       <h3>Key takeaways</h3>
@@ -477,6 +507,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
         <li><strong>Specific beats generic.</strong> A bare “AI-generated” label invites people to assume full automation.</li>
         <li><strong>Leadership beats oversight.</strong> “Human-led with AI help” earned twice the comfort of “AI-led with human oversight.”</li>
         <li><strong>Surveys understate the cost.</strong> Stated intentions barely moved while real clicks and purchases fell sharply.</li>
+        <li><strong>The sender pays more than the message.</strong> Labels cut trust in the creator, yet labeled messages persuaded as well as unlabeled ones.</li>
       </ul>
     </div>
   </div>
@@ -487,7 +518,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
       <div class="link"><span class="step">01 · Signal</span><h3>The audience learns AI was involved</h3><p>The signal can come from the sender, a platform label or a third party, and exposure by a third party does the most damage (Schilke 2025).</p></div>
       <div class="link"><span class="step">02 · Assumption</span><h3>They estimate how much AI did</h3><p>Without details, people assume AI did all the work (Altay 2024), and suspicion alone can trigger the penalty (Hohenstein 2023).</p></div>
       <div class="link"><span class="step">03 · Judgement</span><h3>They reassess authenticity and effort</h3><p>Emotional, creative and luxury content loses the most because effort is part of what people value (Kirk 2025; Rubin 2025; To 2025).</p></div>
-      <div class="link"><span class="step">04 · Behavior</span><h3>Belief, sharing, clicks and purchases shift</h3><p>Stated intentions changed little in surveys, but observed clicks and purchases fell sharply in the field (Wittenberg 2025; Luo 2019; Lee 2025).</p></div>
+      <div class="link"><span class="step">04 · Behavior</span><h3>Belief, sharing, clicks and purchases shift</h3><p>Stated intentions changed little in surveys, but observed clicks, purchases and cooperation fell sharply when behavior was measured (Wittenberg 2025; Luo 2019; Lee 2025; Ishowo-Oloko 2019).</p></div>
     </div>
   </div>
 
@@ -503,6 +534,8 @@ main.wrap{padding-top:20px;padding-bottom:64px}
           <tr><td>Altay &amp; Gilardi 2024</td><td>2 preregistered experiments, 4,976 people</td><td>Perceived accuracy, sharing intent</td><td class="num">⅓ of a “false” label</td><td><span class="grade A">A</span></td></tr>
           <tr><td>Wittenberg et al. 2025</td><td>2 preregistered experiments, 7,579 people</td><td>Belief; stated engagement</td><td class="num">Belief ↓; engagement ≈ 0</td><td><span class="grade A">A</span></td></tr>
           <tr><td>Zhang &amp; Gosline 2023</td><td>Online experiments, professional vs. AI ad copy</td><td>Perceived quality</td><td class="num">AI gap narrowed, not reversed</td><td><span class="grade B">B</span></td></tr>
+          <tr><td>Wang, Sturgis &amp; de Kadt 2026</td><td>Survey experiment, 3,861 UK adults (probability sample)</td><td>Perceived accuracy; policy support</td><td class="num">Accuracy ↓; support ≈ 0</td><td><span class="grade A">A</span></td></tr>
+          <tr><td>Gallegos et al. 2026</td><td>Survey experiment, 1,601 US adults</td><td>Attitude change from the message</td><td class="num">No significant effect</td><td><span class="grade A">A</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -516,16 +549,18 @@ main.wrap{padding-top:20px;padding-bottom:64px}
       <table>
         <thead><tr><th>Factor</th><th>Larger penalty</th><th>Smaller penalty</th><th>Studies</th></tr></thead>
         <tbody>
-          <tr><td><strong>Message type</strong></td><td>Emotional and personal: thank-you notes, condolences, care, personal emails</td><td>Factual and functional: updates, service information</td><td>Kirk 2025; Rubin 2025; Yin 2024; Liu 2022</td></tr>
-          <tr><td><strong>Product or brand</strong></td><td>Hedonic, creative and luxury</td><td>Utilitarian and mainstream</td><td>Longoni &amp; Cian 2022; To 2025; Millet 2023; Bellaiche 2023</td></tr>
+          <tr><td><strong>Message type</strong></td><td>Emotional and personal: thank-you notes, condolences, care, personal emails</td><td>Factual and functional: updates, service information</td><td>Kirk 2025; Rubin 2025; Yin 2024; Liu 2022; Karinshak 2023</td></tr>
+          <tr><td><strong>Product or brand</strong></td><td>Hedonic, creative and luxury</td><td>Utilitarian and mainstream</td><td>Longoni &amp; Cian 2022; To 2025; Millet 2023; Bellaiche 2023; Ragot 2020</td></tr>
           <tr><td><strong>What AI made</strong></td><td>The core: the person, the service, the promise</td><td>The setting: backgrounds and tangible details</td><td>Grigsby 2025</td></tr>
-          <tr><td><strong>Stated role of AI</strong></td><td>No detail, or just “AI-generated”</td><td>A specific, smaller role, such as “edited with AI”</td><td>Altay 2024; Kirk 2025</td></tr>
-          <tr><td><strong>Evidence of process</strong></td><td>A label on its own</td><td>A label with the sources used</td><td>Toff 2025</td></tr>
-          <tr><td><strong>Who led the work</strong></td><td>AI-led with “human oversight”</td><td>Person-led with AI help</td><td>Reuters 2025; Reis 2024; Brüns 2024; Longoni &amp; Cian 2022</td></tr>
+          <tr><td><strong>Stated role of AI</strong></td><td>No detail, or just “AI-generated”</td><td>A specific, smaller role, such as “edited with AI”</td><td>Altay 2024; Kirk 2025; Jia 2024</td></tr>
+          <tr><td><strong>Evidence of process</strong></td><td>A label on its own</td><td>A label with the sources used, or with context on how AI was used</td><td>Toff 2025; Wang 2026</td></tr>
+          <tr><td><strong>Who led the work</strong></td><td>AI-led with “human oversight”</td><td>Person-led with AI help</td><td>Reuters 2025; Reis 2024; Brüns 2024; Longoni &amp; Cian 2022; Waddell 2019</td></tr>
           <tr><td><strong>Creative quality</strong></td><td>Routine, low-effort-looking output</td><td>Highly creative output that signals effort</td><td>To 2025; Bellaiche 2023</td></tr>
           <tr><td><strong>How the audience learned</strong></td><td>Exposed by a third party, or merely suspected</td><td>Disclosed by the sender</td><td>Schilke 2025; Hohenstein 2023</td></tr>
           <tr><td><strong>Audience</strong></td><td>High trust in the institution; belief that creativity is uniquely human</td><td>Positive attitudes toward AI; sees AI as humanlike; values transparency</td><td>Toff 2025; Millet 2023; Schilke 2025; Baek 2024; Koning 2025</td></tr>
           <tr><td><strong>Norms</strong></td><td>A mixed setting where only some use AI</td><td>A setting where everyone is assumed to use it</td><td>Jakesch 2019</td></tr>
+          <tr><td><strong>Service stakes</strong></td><td>Critical issues that customers care about</td><td>Routine issues, or after an AI failure, when disclosure helps customers forgive the error</td><td>Mozafari 2022</td></tr>
+          <tr><td><strong>What is measured</strong></td><td>Trust in the sender, perceived accuracy, satisfaction with the creator</td><td>Persuasion by the message itself, policy support, wider concern about misinformation</td><td>Rae 2024; Palmer &amp; Spirling 2023; Gallegos 2026; Wang 2026; Gilardi 2024</td></tr>
         </tbody>
       </table>
     </div>
@@ -560,6 +595,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
       <li>Most studies measure a single exposure, so the effect on repeat customers and long-term donors is unknown.</li>
       <li>The field evidence comes from one financial-services firm, one beauty retailer and one luxury email test. How the penalty plays out for nonprofits in the field is untested.</li>
       <li>How much of the penalty is aversion to AI, and how much is a premium for human effort? The answer changes what to emphasize.</li>
+      <li>Why do labels cut trust in the sender but not the persuasive power of the message? Whether that holds for high-salience topics and for brands, not just policy arguments, is untested.</li>
     </ul>
   </div>
 
@@ -761,6 +797,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
     <label for="f-col">Collection<select id="f-col"><option value="all">All</option><option value="research">AI in Audience Research</option><option value="disclosure">Reactions to AI Disclosure</option></select></label>
     <label for="f-grade">Grade<select id="f-grade"><option value="all">All</option><option value="A">A · Strong</option><option value="B">B · Moderate</option><option value="C">C · Limited</option></select></label>
     <label for="f-design">Design<select id="f-design"><option value="all">All</option></select></label>
+    <label for="f-src">Authors<select id="f-src"><option value="all">All</option><option value="ind">Independent</option><option value="co">Company-affiliated</option></select></label>
     <label for="f-sort">Sort<select id="f-sort"><option value="grade">Grade, strongest first</option><option value="year">Year, newest first</option></select></label>
     <span class="count" id="lib-count"></span>
   </div>
@@ -781,6 +818,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
       <ul class="clean">
         <li><strong>AI in Audience Research</strong> includes studies that compare AI output with data from real people on tasks used in audience, market, consumer or opinion research.</li>
         <li><strong>Reactions to AI Disclosure</strong> includes studies that randomly vary whether people believe AI was involved, plus large representative surveys of attitudes toward AI-made content.</li>
+        <li>We include research from AI developers such as Anthropic, Google and Microsoft, and from research vendors and platforms such as Qualtrics, Kantar, Ipsos, Getty Images and Adobe, because they often have data no one else has. Each of these studies carries a “Potential bias” note naming the commercial interest, is graded lower on independence and never supports a verdict on its own. Use the Authors filter in the <a href="#library">Study library</a> to see them separately.</li>
         <li>We favor peer-reviewed studies, large or preregistered samples and settings close to audience research and marketing communications, while including influential preprints and industry reports when they test a common use case. Their grades reflect their limits.</li>
         <li>This version covers <span data-count="all">52</span> studies: <span data-count="research">26</span> in AI in Audience Research and <span data-count="disclosure">26</span> in Reactions to AI Disclosure.</li>
       </ul>
@@ -888,7 +926,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
 
 <footer class="site">
   <div class="wrap row">
-    <span>Proof and Wonder · Version 1.2 · <span data-count="all">52</span> studies · Updated November 2026</span>
+    <span>Proof and Wonder · Version 1.3 · <span data-count="all">52</span> studies · Updated November 2026</span>
     <span>By Zhaowen Wu</span>
   </div>
 </footer>
@@ -935,12 +973,14 @@ const STUDIES = [
  n:"1,052 real people, each interviewed for about two hours · GSS, Big Five, economic games",
  finding:"Simulated respondents built from two-hour interview transcripts reproduced people's General Social Survey answers 85% as accurately as the people reproduced their own answers two weeks later. They also narrowed accuracy gaps between racial and ideological groups compared with agents built from demographics alone.",
  read:"This is the strongest evidence against our subgroup verdict, and on closer reading it supports it. The accuracy came from rich data on each real person, which makes these agents digital twins of people you have already interviewed rather than a substitute for a sample.",
+ coi:"One co-author is at Google DeepMind, which develops AI models.",
  flags:["Preprint"],url:"https://arxiv.org/abs/2411.10109"},
 {id:"brand",col:"research",title:"Using LLMs for Market Research",authors:"Brand, Israeli & Ngwe",venue:"HBS working paper / MSI",year:2025,design:"Validation benchmark",grade:"B",
  n:"Willingness-to-pay and conjoint tasks compared with studies of real people",
  finding:"Willingness-to-pay estimates from the model were sometimes close to human results but often inaccurate, and in some cases had the wrong sign. Fine-tuning on past survey data from the same category improved alignment.",
  read:"The authors' own conclusion is that AI supplements human studies rather than replacing them. In practice, the value of these tools rises sharply for teams that already own a library of relevant survey data.",
- flags:["Working paper","Two authors are Microsoft economists"],url:"https://papers.ssrn.com/abstract=4395751"},
+ coi:"Two authors are Microsoft economists; Microsoft sells AI tools.",
+ flags:["Working paper"],url:"https://papers.ssrn.com/abstract=4395751"},
 {id:"li",col:"research",title:"Determining the Validity of Large Language Models for Automated Perceptual Analysis",authors:"Li, Castelo, Katona & Sarvary",venue:"Marketing Science",year:2024,design:"Validation benchmark",grade:"B",
  n:"Brand similarity and attribute ratings for perceptual maps in selected product categories",
  finding:"Perceptual maps built from model output agreed with maps built from human surveys at rates of 75% to 85%, though the authors caution that fully automated research may not hold up in every category.",
@@ -950,7 +990,8 @@ const STUDIES = [
  n:"57 personal-care concept surveys · 9,300 human responses",
  finding:"Instead of asking the model for a number, the researchers asked for a short written reaction and converted it to a 1–5 rating by semantic similarity. That approach reached 90% of human test–retest reliability for ranking concepts and produced realistic rating distributions (KS similarity above 0.85), whereas direct numeric ratings came out narrow and skewed.",
  read:"This is the most promising concept-testing result to date and a genuine method advance. It is also one category, one client and total-sample results only, written by a firm that sells synthetic research, so it needs replication against your own past tests before it earns a place in a decision.",
- flags:["Preprint","Vendor authors (synthetic research)"],url:"https://arxiv.org/abs/2510.08338"},
+ coi:"Authors from PyMC Labs, which sells synthetic research, working with Colgate-Palmolive.",
+ flags:["Preprint"],url:"https://arxiv.org/abs/2510.08338"},
 {id:"arora",col:"research",title:"AI–Human Hybrids for Marketing Research: Leveraging LLMs as Collaborators",authors:"Arora, Chakraborty & Nishimura",venue:"Journal of Marketing",year:2025,design:"Case replication",grade:"B",
  n:"Repeat of a Fortune 500 food company's 2019 qualitative and quantitative studies, with GPT-4",
  finding:"The model drafted sample specifications, ran synthetic interviews and analyzed qualitative data. It missed some themes the human team found and surfaced some they missed, and expert judges rated the human–AI combination above either working alone.",
@@ -985,11 +1026,13 @@ const STUDIES = [
  n:"Multi-country pilots comparing standard AI moderators, enhanced AI moderators and expert human moderators",
  finding:"In blind reviews, expert moderators rated standard AI moderators poorly on rapport, improvising beyond the script, adapting to respondents and picking up emotional cues. Adding topic knowledge and behavioral frameworks improved the AI, but humans still uncovered more unexpected insights.",
  read:"A useful practitioner test of where AI moderation falls short today: depth and the unexpected. It comes from a firm that sells both human and AI qualitative research and has not been peer-reviewed.",
- flags:["Vendor report","Not peer-reviewed"],url:"https://www.ipsos.com/en-us/mind-or-machines-exploring-ai-moderation-and-when-use-it"},
+ coi:"Ipsos sells both human-moderated and AI-moderated research.",
+ flags:["Not peer-reviewed"],url:"https://www.ipsos.com/en-us/mind-or-machines-exploring-ai-moderation-and-when-use-it"},
 {id:"aher",col:"research",title:"Using Large Language Models to Simulate Multiple Humans and Replicate Human Subject Studies",authors:"Aher, Arriaga & Kalai",venue:"ICML",year:2023,design:"Validation benchmark",grade:"B",
  n:"Four classic experiments (Ultimatum Game, garden-path sentences, Milgram-style obedience, wisdom of crowds) · 5–6 GPT models",
  finding:"Larger models replicated the findings of the first three experiments. In the wisdom-of-crowds task, however, recent models including ChatGPT and GPT-4 showed a “hyper-accuracy distortion”: most simulated participants gave perfectly correct answers to obscure questions that real people get wrong.",
  read:"A vivid example of why matching a known result is not the same as behaving like people. Models that know too much produce answer distributions no human sample would, which matters for any study of knowledge, awareness or recall.",
+ coi:"One co-author was at Microsoft Research, and Microsoft sells AI tools.",
  flags:["Models from 2022–23"],url:"https://arxiv.org/abs/2208.10264"},
 {id:"tjuatja",col:"research",title:"Do LLMs Exhibit Human-like Response Biases? A Case Study in Survey Design",authors:"Tjuatja, Chen, Wu, Talwalkar & Neubig",venue:"Transactions of the ACL",year:2024,design:"Validation benchmark",grade:"A",
  n:"Nine open and commercial models · Question pairs built from documented human response biases",
@@ -1025,7 +1068,8 @@ const STUDIES = [
  n:"About 1,500 real panel respondents per test, compared with matched synthetic respondents · Several OpenAI models · Political and consumer questions",
  finding:"Synthetic toplines on political questions came within about 3 to 4 points, but subgroup errors averaged about 10 points and reached 30 for the smallest groups. Consumer questions about coffee averaged 19.8 points of error, and feeding the model richer respondent data did not reliably help.",
  read:"The most direct test of the commercial use case, with methods laid out in full. The publisher sells human panels, so we grade it C, the same grade as the vendor study that favors synthetic respondents.",
- flags:["White paper","Vendor authors (human survey panels)"],url:"https://www.verasight.io/reports/synthetic-sampling"},
+ coi:"Verasight sells human survey panels, which synthetic respondents would compete with.",
+ flags:["White paper"],url:"https://www.verasight.io/reports/synthetic-sampling"},
 
 /* ================= REACTIONS TO AI DISCLOSURE ================= */
 {id:"luo",col:"disclosure",title:"Machines vs. Humans: The Impact of AI Chatbot Disclosure on Customer Purchases",authors:"Luo, Tong, Fang & Qu",venue:"Marketing Science",year:2019,design:"Field experiment",grade:"A",
@@ -1092,7 +1136,8 @@ const STUDIES = [
  n:"2 preregistered studies · 2,280 participants · Source labeled “AI,” “physician” or “physician + AI”",
  finding:"Advice labeled “AI” or “physician + AI” was rated less reliable and less empathetic than identical advice labeled “physician,” and people were less willing to follow it. Ratings of how understandable the advice was didn't differ.",
  read:"In a high-stakes domain, human oversight did not restore trust. The scenarios were hypothetical.",
- flags:["One author works for Pfizer (declared no role in the study)"],url:"https://doi.org/10.1038/s41591-024-03180-7"},
+ coi:"One author works for Pfizer, which declared no role in the study.",
+ flags:[],url:"https://doi.org/10.1038/s41591-024-03180-7"},
 {id:"jakesch",col:"disclosure",title:"AI-Mediated Communication: How the Perception that Profile Text was Written by AI Affects Trustworthiness",authors:"Jakesch, French, Ma, Hancock & Naaman",venue:"ACM CHI",year:2019,design:"Online experiment",grade:"C",
  n:"3 online experiments with Airbnb host profiles",
  finding:"When participants believed all or none of the profiles were AI-written, trust was similar. Only in a mixed set did they distrust the profiles they suspected were written by AI, a pattern the authors call the “replicant effect.”",
@@ -1157,7 +1202,200 @@ const STUDIES = [
  n:"One between-subjects experiment · 304 participants",
  finding:"An AI disclosure on a generative-AI ad lowered trust in both the ad and the organization through one pathway, but also raised trust through another, as some people valued the transparency.",
  read:"Disclosure isn't purely a cost. Part of the audience rewards honesty, which helps explain why effects vary so much across studies.",
- flags:["Single study"],url:"https://doi.org/10.1080/15252019.2025.2554149"}
+ flags:["Single study"],url:"https://doi.org/10.1080/15252019.2025.2554149"},
+{id:"mellon",col:"research",title:"Do AIs know what the most important issue is? Using language models to code open-text social survey responses at scale",authors:"Mellon, Bailey, Scott, Breckwoldt, Miori & Schmedeman",venue:"Research & Politics",year:2024,design:"Validation benchmark",grade:"A",
+ n:"British Election Study open-text “most important issue” answers · 50 categories",
+ finding:"With no training data, the best model (Claude-1.3) coded answers with 93.9% accuracy, close to a second human coder's 94.7% and slightly ahead of the best supervised model. On harder, novel text it reached 80.9% against the human coder's 88.6%, while still beating a model trained on 576,000 labeled cases.",
+ read:"Strong evidence that AI can code open-ended survey answers into a defined codeframe at close to human accuracy. The gap on unusual answers is the reason a human-coded check sample still matters.",
+ flags:["One question type","Older models"],url:"https://doi.org/10.1177/20531680241231468"},
+{id:"ziems",col:"research",title:"Can Large Language Models Transform Computational Social Science?",authors:"Ziems, Held, Shaikh, Chen, Zhang & Yang",venue:"Computational Linguistics",year:2024,design:"Validation benchmark",grade:"A",
+ n:"13 language models · 24 social science coding benchmarks",
+ finding:"On classification tasks, the models didn't beat the best fine-tuned models but reached fair agreement with human coders, and on free-form explanation tasks the best models often exceeded the quality of crowd workers' reference answers.",
+ read:"Supports using AI as one coder on a human team rather than as a replacement for careful human coding or for models trained on your own labels.",
+ flags:[],url:"https://doi.org/10.1162/coli_a_00502"},
+{id:"pangakis",col:"research",title:"Automated Annotation with Generative AI Requires Validation",authors:"Pangakis, Wolken & Fasching",venue:"arXiv preprint",year:2023,design:"Validation benchmark",grade:"B",
+ n:"27 annotation tasks across 11 published social science datasets · GPT-4",
+ finding:"AI coding performed well overall but varied widely by dataset and task: 9 of the 27 tasks had precision or recall below 0.5.",
+ read:"The clearest evidence that strong average coding results don't carry over automatically to your codeframe. Validate against a human-labeled sample, task by task.",
+ flags:["Preprint"],url:"https://arxiv.org/abs/2306.00176"},
+{id:"chopra",col:"research",title:"Conducting Qualitative Interviews with AI",authors:"Chopra & Haaland",venue:"Working paper (CESifo / SSRN)",year:2023,design:"Validation benchmark",grade:"B",
+ n:"381 AI-led interviews on why people don't invest in stocks · Follow-ups months later",
+ finding:"AI-led interviews produced thematically richer data than other scalable ways of collecting qualitative data, mainly because the AI asked dynamic follow-up questions, and the answers predicted behavior months later. In the first version, most participants said they preferred the AI-led interview to a human-led one.",
+ read:"Good evidence that AI interviewers can collect useful qualitative data at scale. It doesn't test AI against expert human moderators on depth, so it complements the Ipsos findings rather than contradicting them.",
+ flags:["Working paper","One topic"],url:"https://papers.ssrn.com/abstract=4572954"},
+{id:"geiecke",col:"research",title:"Conversations at Scale: Robust AI-led Interviews",authors:"Geiecke & Jaravel",venue:"Working paper (CEPR / SSRN)",year:2024,design:"Validation benchmark",grade:"B",
+ n:"AI-led interviews in four applications · Rated by trained sociologists and by respondents",
+ finding:"Sociologists rated AI-led interview transcripts as high quality and roughly comparable to an average human expert working under the same conditions, and in one application respondents wrote 142% more words than in conventional open-text fields.",
+ read:"Adds to the case for AI moderation of structured qualitative work. The benchmark is what a human expert could have done, not a head-to-head field test.",
+ flags:["Working paper","142% figure from the authors' blog"],url:"https://papers.ssrn.com/abstract=4974382"},
+{id:"hamalainen",col:"research",title:"Evaluating Large Language Models in Generating Synthetic HCI Research Data: a Case Study",authors:"Hämäläinen, Tavast & Kunnari",venue:"CHI",year:2023,design:"Validation benchmark",grade:"B",
+ n:"GPT-3 open-ended answers about video games as art, compared with real responses",
+ finding:"Synthetic open-ended answers were believable, and raters often found them more convincing than real ones, but the authors conclude that synthetic data suits ideation and piloting, with any findings validated on real data.",
+ read:"Useful support for drafting and piloting. The paper also warns that crowdsourced open-text data may now contain AI-written answers that are hard to detect.",
+ flags:["One topic","Older model"],url:"https://doi.org/10.1145/3544548.3580688"},
+{id:"horton",col:"research",title:"Large Language Models as Simulated Economic Agents: What Can We Learn from Homo Silicus?",authors:"Horton, Filippas & Manning",venue:"NBER working paper",year:2023,design:"Case replication",grade:"C",
+ n:"Classic behavioral economics experiments on fairness, social preferences and status quo bias, re-run with AI agents",
+ finding:"Simulated agents reproduced the direction of several classic results; for example, their views on price gouging shifted predictably with the political views they were given.",
+ read:"Supports AI for piloting and generating hypotheses, not for estimating effect sizes. The authors disclose a financial interest in a simulation company, and one is an economic advisor to Anthropic.",
+ coi:"The authors have a financial interest in a simulation company, and one is an economic advisor to Anthropic.",
+ flags:["Working paper"],url:"https://arxiv.org/abs/2301.07543"},
+{id:"gui",col:"research",title:"The Challenge of Using LLMs to Simulate Human Behavior: A Causal Inference Perspective",authors:"Gui & Toubia",venue:"Working paper (arXiv / SSRN)",year:2023,design:"Validation benchmark",grade:"B",
+ n:"Simulated demand experiments at different prices, benchmarked against a real experiment",
+ finding:"When simulated respondents were blind to the design, changing the price also changed other, unstated features of the scenario, which confounded the estimated effect; telling the model about the experimental design improved results.",
+ read:"A reason for care with simulated A/B tests, since the AI may be reacting to more than the variable you changed.",
+ flags:["Working paper"],url:"https://arxiv.org/abs/2312.15524"},
+{id:"dillion",col:"research",title:"Can AI language models replace human participants?",authors:"Dillion, Tandon, Gu & Gray",venue:"Trends in Cognitive Sciences",year:2023,design:"Validation benchmark",grade:"C",
+ n:"464 moral scenarios compared with published human ratings · GPT-3.5",
+ finding:"The model's moral judgments correlated about 0.95 with average human judgments, and the authors argue that AI may supplement human participants but is unlikely to replace them fully.",
+ read:"High agreement on averages says little about variation across groups, a limitation the authors themselves emphasize.",
+ flags:["Short commentary with one analysis","0.95 figure from news coverage"],url:"https://doi.org/10.1016/j.tics.2023.04.008"},
+{id:"sanders",col:"research",title:"Demonstrations of the Potential of AI-based Political Issue Polling",authors:"Sanders, Ulinich & Schneier",venue:"Harvard Data Science Review",year:2023,design:"Validation benchmark",grade:"B",
+ n:"Simulated answers on policy issues compared with the Cooperative Election Study · ChatGPT",
+ finding:"Simulated opinion tracked mean levels and ideological breakdowns closely, with correlations typically above 0.85, but it was less successful at demographic differences and overgeneralized on issues that emerged after its training data.",
+ read:"The same pattern as the Verasight reports: toplines driven by ideology look good, while demographic subgroups don't.",
+ flags:["Older model","One survey"],url:"https://doi.org/10.1162/99608f92.1d3cf75d"},
+{id:"leeclimate",col:"research",title:"Can large language models estimate public opinion about global warming? An empirical assessment of algorithmic fidelity and bias",authors:"Lee, Peng, Goldberg, Rosenthal, Kotcher, Maibach & Leiserowitz",venue:"PLOS Climate",year:2024,design:"Validation benchmark",grade:"B",
+ n:"Two nationally representative US climate opinion surveys · GPT-3.5 and GPT-4",
+ finding:"Given demographics alone, the models reproduced presidential vote choice but not climate opinions. Adding issue-related survey measures raised GPT-4's accuracy to between 53% and 91%, yet the models still underestimated worry about global warming among Black Americans.",
+ read:"Toplines can be partly rescued with your own survey covariates, while subgroup bias persists.",
+ flags:["One topic"],url:"https://doi.org/10.1371/journal.pclm.0000429"},
+{id:"durmus",col:"research",title:"Towards Measuring the Representation of Subjective Global Opinions in Language Models",authors:"Durmus, Nguyen, Liao, Schiefer et al. (Anthropic)",venue:"arXiv preprint",year:2023,design:"Validation benchmark",grade:"B",
+ n:"2,556 questions from Pew Global Attitudes surveys and the World Values Survey",
+ finding:"By default, the model's answers most resembled opinions in the US and some European and South American countries. Prompting for a country's perspective moved answers closer but could reflect cultural stereotypes, and translating the questions didn't make answers match speakers of those languages.",
+ read:"Another sign that synthetic respondents default to some populations' views, which matters for any non-US or multicountry study. The authors work at Anthropic, which developed the model tested.",
+ coi:"The authors work at Anthropic, which developed the model tested. Anthropic also makes Claude, the AI that helped build this site.",
+ flags:["Preprint"],url:"https://arxiv.org/abs/2306.16388"},
+{id:"quwang",col:"research",title:"Performance and biases of Large Language Models in public opinion simulation",authors:"Qu & Wang",venue:"Humanities and Social Sciences Communications",year:2024,design:"Validation benchmark",grade:"B",
+ n:"World Values Survey respondent profiles across countries · ChatGPT",
+ finding:"Simulation worked better in Western, English-speaking and developed countries, especially the US, and showed biases by gender, ethnicity, age, education and social class, as well as by topic.",
+ read:"A strong caution for global brands considering synthetic respondents outside the US.",
+ flags:["One model"],url:"https://doi.org/10.1057/s41599-024-03609-x"},
+{id:"qi",col:"research",title:"Representation Bias in Political Sample Simulations with Large Language Models",authors:"Qi, Lyu et al.",venue:"arXiv preprint",year:2024,design:"Validation benchmark",grade:"C",
+ n:"American, German and Chinese survey data · GPT-3.5",
+ finding:"Simulation was better for vote choice than for opinions, and better in English-speaking countries, two-party systems and democracies; it was notably worse for 18-to-30-year-olds than for older groups.",
+ read:"Young adults are a priority segment for many brands, and they were among the worst simulated.",
+ flags:["Preprint","Older model"],url:"https://arxiv.org/abs/2407.11409"},
+{id:"megastudy",col:"research",title:"A mega-study of digital twins reveals strengths, weaknesses and opportunities for further improvement",authors:"Toubia, Peng, Gui et al.",venue:"arXiv preprint",year:2025,design:"Validation benchmark",grade:"B",
+ n:"19 preregistered sub-studies · 2,058 US panelists and their digital twins · 164 outcomes",
+ finding:"Twins built from about 500 answers per person captured some relative differences between people (average correlation about 0.2), but they missed population means by 0.35 standard deviations on average, were less spread out than humans on 94% of outcomes, and were less accurate for less educated, lower-income and politically extreme participants.",
+ read:"Even with rich individual data, the compression and subgroup problems remain, which makes this strong support for the subgroup verdict.",
+ flags:["Preprint"],url:"https://arxiv.org/abs/2509.19088"},
+{id:"brucks",col:"research",title:"Prompt architecture induces methodological artifacts in large language models",authors:"Brucks & Toubia",venue:"PLOS ONE",year:2025,design:"Validation benchmark",grade:"A",
+ n:"Five full-factorial experiments · GPT-3, GPT-4 and Llama 3.1",
+ finding:"Arbitrary features of the prompt, including option order, labels, framing and requests for justification, systematically biased the models' answers, with clear response-order and label effects.",
+ read:"A synthetic result can change with how the question is laid out, so run several prompt versions and aggregate before trusting any number.",
+ flags:[],url:"https://doi.org/10.1371/journal.pone.0319159"},
+{id:"gallegos",col:"disclosure",title:"Labeling messages as AI-generated does not reduce their persuasive effects",authors:"Gallegos, Shani, Shi, Bianchi, Gainsburg, Jurafsky & Willer",venue:"PNAS Nexus",year:2026,design:"Survey experiment",grade:"A",
+ n:"1,601 US adults · Four low-salience policy topics",
+ finding:"AI-written messages shifted policy views by about 10 percentage points on average, and labeling them as written by an expert AI model, rather than by a human policy expert or not at all, made no significant difference to attitude change, perceived accuracy or sharing intent.",
+ read:"An important counterweight: a label can lower trust in the sender without blunting the message itself, at least on topics where people hold weak views.",
+ flags:["Low-salience topics"],url:"https://arxiv.org/abs/2504.09865"},
+{id:"wangsturgis",col:"disclosure",title:"AI labeling reduces the perceived accuracy of online content but has limited broader effects",authors:"Wang, Sturgis & de Kadt",venue:"Telematics and Informatics",year:2026,design:"Survey experiment",grade:"A",
+ n:"3,861 UK adults · Probability sample",
+ finding:"An AI label lowered the perceived accuracy of a policy news article and interest in the policy, but didn't change support for the policy or general concern about misinformation. Explaining generative AI beforehand shrank the accuracy penalty.",
+ read:"From a probability sample, the penalty is real but narrow, and context about how AI was used softens it.",
+ flags:[],url:"https://arxiv.org/abs/2506.16202"},
+{id:"ishowo",col:"disclosure",title:"Behavioural evidence for a transparency–efficiency tradeoff in human–machine cooperation",authors:"Ishowo-Oloko, Bonnefon, Soroye, Crandall, Rahwan & Rahwan",venue:"Nature Machine Intelligence",year:2019,design:"Online experiment",grade:"A",
+ n:"About 700 participants · Repeated cooperation game",
+ finding:"Bots were better than humans at inducing cooperation, but only while their identity was hidden. Disclosing the bot erased the advantage, and people didn't recover from their bias even after seeing the bot cooperate.",
+ read:"Behavioral evidence, not just stated attitudes, that disclosure carries a real efficiency cost.",
+ flags:["Pre-generative AI"],url:"https://doi.org/10.1038/s42256-019-0113-5"},
+{id:"rae",col:"disclosure",title:"The Effects of Perceived AI Use On Content Perceptions",authors:"Rae (Google)",venue:"CHI",year:2024,design:"Online experiment",grade:"B",
+ n:"1,641 participants · News, travel, health and jokes",
+ finding:"When identical human-written content was labeled as AI-assisted or AI-generated, people felt more negatively about the creator and were less satisfied, but their judgments of the content itself didn't change.",
+ read:"The penalty lands on the relationship with the creator, a key point for brands and influencers.",
+ coi:"The author works at Google, which develops AI products.",
+ flags:[],url:"https://doi.org/10.1145/3613904.3642076"},
+{id:"karinshak",col:"disclosure",title:"Working With AI to Persuade: Examining a Large Language Model's Ability to Generate Pro-Vaccination Messages",authors:"Karinshak, Liu, Park & Hancock",venue:"CSCW",year:2023,design:"Online experiment",grade:"B",
+ n:"Three studies · COVID-19 vaccine messages from GPT-3 and the CDC",
+ finding:"Curated AI-written messages were rated more effective and as having stronger arguments than CDC messages, but messages labeled as AI-generated were rated lower than the same messages under other labels.",
+ read:"AI can draft public-interest messages, but people prefer them to come from a human institution, so attribute them to the organization and keep people visibly accountable.",
+ flags:["Older model"],url:"https://doi.org/10.1145/3579592"},
+{id:"limschmalzle",col:"disclosure",title:"The effect of source disclosure on evaluation of AI-generated messages",authors:"Lim & Schmälzle",venue:"Computers in Human Behavior: Artificial Humans",year:2024,design:"Online experiment",grade:"B",
+ n:"Two studies · Vaping prevention messages",
+ finding:"Disclosing AI as the source slightly lowered evaluations of AI-written messages without changing how people ranked them, and the effect depended on participants' attitudes toward AI.",
+ read:"A small effect pointing in the usual direction, moderated by how people already feel about AI.",
+ flags:["One topic"],url:"https://doi.org/10.1016/j.chbah.2024.100058"},
+{id:"palmerspirling",col:"disclosure",title:"Large Language Models Can Argue in Convincing Ways About Politics, But Humans Dislike AI Authors",authors:"Palmer & Spirling",venue:"Political Science",year:2023,design:"Online experiment",grade:"B",
+ n:"Judges rating AI-written and human-written arguments on US political issues",
+ finding:"AI-written arguments competed well with human ones, but once judges learned who the author really was, they preferred the human arguments.",
+ read:"Echoes the broader pattern: the quality is competitive, and the label carries the cost.",
+ flags:["One study"],url:"https://doi.org/10.1080/00323187.2024.2335471"},
+{id:"gilardi24",col:"disclosure",title:"Willingness to Read AI-Generated News Is Not Driven by Their Perceived Quality",authors:"Gilardi, Di Lorenzo, Ezzaini, Santa, Streiff, Zurfluh & Hoes",venue:"arXiv preprint",year:2024,design:"Survey experiment",grade:"B",
+ n:"599 Swiss adults · Quota sample · Preregistered",
+ finding:"Readers rated human-written, AI-assisted and AI-generated articles as equal in quality. Once told AI was involved, they were more willing to keep reading those articles, but no more willing to read AI-generated news in future.",
+ read:"Aversion isn't about quality, which is why better output alone won't close the trust gap.",
+ flags:["Preprint","Stated measures"],url:"https://arxiv.org/abs/2409.03500"},
+{id:"jia",col:"disclosure",title:"News bylines and perceived AI authorship: Effects on source and message credibility",authors:"Jia, Appelman, Wu & Bien-Aimé",venue:"Computers in Human Behavior: Artificial Humans",year:2024,design:"Online experiment",grade:"B",
+ n:"269 participants · News bylines describing different AI roles",
+ finding:"How much readers thought AI had contributed, rather than the byline's wording, predicted lower message and source credibility, through lower perceived humanness.",
+ read:"What people infer matters more than the exact label, consistent with Altay & Gilardi.",
+ flags:["Small sample"],url:"https://doaj.org/article/461d3f862a4d406ca3afc0a8032579a6"},
+{id:"mozafari",col:"disclosure",title:"Trust me, I'm a bot – repercussions of chatbot disclosure in different service frontline settings",authors:"Mozafari, Weiger & Hammerschmidt",venue:"Journal of Service Management",year:2022,design:"Online experiment",grade:"B",
+ n:"Two experiments · About 200 participants each · Service chat scenario",
+ finding:"Disclosing the chatbot reduced retention through lower trust when the service issue was critical, but when the chatbot failed to solve the problem, disclosure actually improved retention.",
+ read:"Disclosure can buy forgiveness for errors, a useful nuance for customer service teams.",
+ flags:["Scenario-based"],url:"https://doi.org/10.1108/JOSM-10-2020-0380"},
+{id:"waddell19",col:"disclosure",title:"Can an Algorithm Reduce the Perceived Bias of News? Testing the Effect of Machine Attribution on News Readers' Evaluations of Bias, Anthropomorphism, and Credibility",authors:"Waddell",venue:"Journalism & Mass Communication Quarterly",year:2019,design:"Online experiment",grade:"B",
+ n:"612 participants · News bylines",
+ finding:"News attributed to a human journalist and an algorithm together was rated less biased and more credible than news attributed to either one alone.",
+ read:"Early evidence for the “human-led with AI help” framing.",
+ flags:["Pre-generative AI"],url:"https://newslab.org/?p=42320"},
+{id:"waddell18",col:"disclosure",title:"A Robot Wrote This? How perceived machine authorship affects news credibility",authors:"Waddell",venue:"Digital Journalism",year:2018,design:"Online experiment",grade:"C",
+ n:"Two experiments · 129 and 182 participants",
+ finding:"An identical news article was rated less credible when attributed to a “robot reporter” than to a human journalist, an effect explained by lower perceived humanness and violated expectations.",
+ read:"An early, small-sample version of the credibility penalty.",
+ flags:["Pre-generative AI","Small samples"],url:"https://www.jou.ufl.edu/insights/people-trust-human-journalists-over-algorithms/"},
+{id:"graefe",col:"disclosure",title:"Readers' perception of computer-generated news: Credibility, expertise, and readability",authors:"Graefe, Haim, Haarmann & Brosius",venue:"Journalism",year:2018,design:"Online experiment",grade:"B",
+ n:"986 German participants · Sports and finance articles",
+ finding:"Changing the declared author had small effects, while articles actually written by computer were rated more credible and expert but less readable; readers favored articles labeled as human-written on readability.",
+ read:"The label and the true source can pull in different directions, and the bonus for a human label showed up mainly in readability.",
+ flags:["Pre-generative AI"],url:"https://doi.org/10.1177/1464884916641269"},
+{id:"tandoc",col:"disclosure",title:"Man vs. Machine? The Impact of Algorithm Authorship on News Credibility",authors:"Tandoc, Yao & Wu",venue:"Digital Journalism",year:2020,design:"Online experiment",grade:"C",
+ n:"Online experiment in Singapore · Source and message credibility",
+ finding:"Algorithm, human and combined bylines produced no overall differences in credibility, but articles attributed to an algorithm lost more credibility when they weren't objective.",
+ read:"Audiences may hold AI to a stricter standard of neutrality than human writers.",
+ flags:["Pre-generative AI"],url:"https://nanyangtechnologicaluniv.demo.elsevierpure.com/en/publications/man-vs-machine-the-impact-of-algorithm-authorship-on-news-credibi"},
+{id:"ragot",col:"disclosure",title:"AI-generated vs. Human Artworks. A Perception Bias Towards Artificial Intelligence?",authors:"Ragot, Martin & Cojean",venue:"CHI Extended Abstracts",year:2020,design:"Online experiment",grade:"C",
+ n:"Paintings presented as made by AI or by a human artist",
+ finding:"The same paintings were liked more and rated more beautiful, novel and meaningful when presented as human-made, and according to the press release they were estimated to be worth about three times as much.",
+ read:"Early evidence that creative work is where the label costs most, consistent with Millet and Bellaiche.",
+ flags:["Extended abstract","Value figure from press release"],url:"https://dblp.org/rec/conf/chi/RagotMC20"},
+{id:"qualtrics",col:"research",title:"Testing Synthetic Data Against Academic Benchmarks: A Replication Study",authors:"Qualtrics",venue:"Vendor report (Greenbook partner content)",year:2026,design:"Validation benchmark",grade:"C",
+ n:"Qualtrics' fine-tuned synthetic model vs. general-purpose AI vs. a matched human panel · 584 usable synthetic completions",
+ finding:"Qualtrics reports that general-purpose AI produced correlations that didn't exist in human data and too little variability, while its own fine-tuned model matched human response patterns far more closely, which it describes as 12 times more accurate (Cohen's d of 0.07 versus about 0.87). It advises keeping human data for past behavior, sensitive topics, compliance work and final validation of major decisions.",
+ read:"Consistent with independent findings that general-purpose models fail and fine-tuning on real answers helps, but the comparison was run and published by the company selling the product, on attitudinal questions, without subgroup results.",
+ coi:"Qualtrics sells the synthetic panel being evaluated.",
+ flags:["Not peer-reviewed","No subgroup results reported"],url:"https://www.greenbook.org/insights/data-science/testing-synthetic-data-against-academic-benchmarks-a-replication-study"},
+{id:"kantar",col:"research",title:"What is synthetic sample – and is it all it's cracked up to be?",authors:"Ostler & Kalidas (Kantar)",venue:"Vendor report",year:2023,design:"Validation benchmark",grade:"C",
+ n:"About 5,000 survey respondents on a luxury product and attitudes to technology · GPT-4 prompted with matching demographics",
+ finding:"GPT-4 answers were overly positive, tracked humans more closely on practical questions such as price than on emotional ones, failed to capture subgroup patterns (for example, among people earning under $125,000) and produced stereotyped open-ended answers that lacked variance. Kantar concluded that off-the-shelf synthetic sample wasn't good enough even as a supplement.",
+ read:"A commercial test that reaches the same subgroup conclusion as the independent studies, from a company with the opposite commercial interest to the synthetic-panel vendors.",
+ coi:"Kantar sells human panel data, and said it was developing its own synthetic datasets.",
+ flags:["Not peer-reviewed","Older model"],url:"https://www.kantar.com/inspiration/analytics/what-is-synthetic-sample-and-is-it-all-its-cracked-up-to-be"},
+{id:"getty",col:"disclosure",title:"Building Trust in the Age of AI (VisualGPS)",authors:"Getty Images",venue:"Vendor survey report",year:2024,design:"Survey",grade:"C",
+ n:"Consumer surveys of 7,500 adults each, 2022–2024 · 25 countries",
+ finding:"Nearly 90% of consumers said they want to know whether an image was created with AI, 98% agreed that authentic images and videos are pivotal for trust, and 76% agreed it's getting hard to tell whether an image is real.",
+ read:"Broad, multicountry evidence that audiences want visual disclosure, in line with Pew. These are stated attitudes, and the agree-statements are worded in ways that invite agreement.",
+ coi:"Getty Images sells photography and licensed imagery, so it has a commercial interest in demand for authentic, human-made visuals.",
+ flags:["Stated attitudes","Methodology summary only"],url:"https://newsroom.gettyimages.com/en/getty-images/nearly-90-of-consumers-want-transparency-on-ai-images-finds-getty-images-report"},
+{id:"adobe",col:"disclosure",title:"Authenticity in the Age of AI Study",authors:"Adobe, with Advanis",venue:"Vendor survey (press release)",year:2024,design:"Survey",grade:"C",
+ n:"2,002 US adults · Opt-in non-probability sample · August 2024",
+ finding:"93% of respondents said it's important to understand how the digital content they consume was created or edited, and 87% said generative AI has made it harder to tell fact from fiction online.",
+ read:"Supports the demand for disclosure, but the survey was commissioned to make the case for Adobe's own provenance labels, and its election-season framing may have raised concern.",
+ coi:"Adobe commissioned the study and promotes Content Credentials, its own content-labeling system.",
+ flags:["Stated attitudes","Opt-in sample","87% figure from trade press"],url:"https://news.adobe.com/news/2024/09/091824-adobe-ai-safety-study"},
+{id:"adobeexpress",col:"disclosure",title:"Consumer trust in AI-written marketing email",authors:"Adobe Express",venue:"Vendor survey, as reported by trade press",year:2025,design:"Survey",grade:"C",
+ n:"1,007 US consumers",
+ finding:"46% said they'd be more likely to unsubscribe if they knew an email was clearly written by AI, and 50% said their trust in a brand would drop if they discovered AI was used at all, even though 72% believed they'd already received AI-generated emails.",
+ read:"Directly relevant to email marketing and consistent with the trust penalty elsewhere, but these are hypothetical stated reactions, reported secondhand.",
+ coi:"Adobe sells AI-assisted content and email creation tools.",
+ flags:["Stated attitudes","Figures from trade press","Year from trade press"],url:"https://www.contentgrip.com/ai-email-trust-crisis/"},
+{id:"gamage",col:"disclosure",title:"Labeling Synthetic Content: User Perceptions of Warning Label Designs for AI-generated Content on Social Media",authors:"Gamage, Sewwandi, Zhang & Bandara",venue:"arXiv preprint",year:2025,design:"Online experiment",grade:"B",
+ n:"911 participants · Ten label designs and a control group · Social media image posts",
+ finding:"Labels made people more likely to believe content was AI-generated, trust in the label varied with its design (labels using “Content Credentials” were trusted most), and labels didn't significantly change liking, commenting or sharing.",
+ read:"Label design affects how much people trust the label itself, and on social media a label didn't dent engagement.",
+ flags:["Preprint"],url:"https://arxiv.org/abs/2503.05711"}
 ];
 
 const GRADE_RANK={A:0,B:1,C:2};
@@ -1174,6 +1412,7 @@ function card(s){
         <div><h4><span class="tag finding">Source finding</span></h4><p>${esc(s.finding)}</p></div>
         <div><h4><span class="tag assess">Our assessment</span></h4><p>${esc(s.read)}</p></div>
       </div>
+      ${s.coi?`<p class="coi"><strong>Potential bias:</strong> ${esc(s.coi)} We grade it lower on independence and don't rely on it alone.</p>`:""}
       <div class="foot">${flags}<a href="${s.url}" target="_blank" rel="noopener">Source ↗</a></div>
     </div>
   </article>`;
@@ -1192,12 +1431,12 @@ const designs=[...new Set(STUDIES.map(s=>s.design))].sort();
 const fDesign=document.getElementById("f-design");
 designs.forEach(d=>{const o=document.createElement("option");o.value=d;o.textContent=d;fDesign.appendChild(o);});
 function renderLibrary(){
-  const c=document.getElementById("f-col").value,g=document.getElementById("f-grade").value,d=fDesign.value,so=document.getElementById("f-sort").value;
-  const list=sortBy(STUDIES.filter(s=>(c==="all"||s.col===c)&&(g==="all"||s.grade===g)&&(d==="all"||s.design===d)),so);
+  const c=document.getElementById("f-col").value,g=document.getElementById("f-grade").value,d=fDesign.value,so=document.getElementById("f-sort").value,src=document.getElementById("f-src").value;
+  const list=sortBy(STUDIES.filter(s=>(c==="all"||s.col===c)&&(g==="all"||s.grade===g)&&(d==="all"||s.design===d)&&(src==="all"||(src==="co")===!!s.coi)),so);
   document.getElementById("list-library").innerHTML=list.length?list.map(card).join(""):`<p class="muted">No studies match these filters. Try setting one of them back to “All.”</p>`;
   document.getElementById("lib-count").textContent=`${list.length} of ${STUDIES.length} studies`;
 }
-["f-col","f-grade","f-design","f-sort"].forEach(id=>document.getElementById(id).addEventListener("change",renderLibrary));
+["f-col","f-grade","f-design","f-src","f-sort"].forEach(id=>document.getElementById(id).addEventListener("change",renderLibrary));
 renderLibrary();
 
 const VIEWS=["home","research","disclosure","history","library","method","about"];

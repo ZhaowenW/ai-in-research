@@ -10,7 +10,7 @@ By Zhaowen Wu · [LinkedIn](https://www.linkedin.com/in/zhaowenwu/) · [proofand
 - **AI in Audience Research**: Can I trust AI to help me understand my audience?
 - **Reactions to AI Disclosure**: How will my audience respond when they know AI was involved?
 - **Industry History**: Has research been through a change like this before?
-- **Study library**: 52 studies, each with an evidence grade (A, B, C).
+- **Study library**: 89 studies, each with an evidence grade (A, B, C) and a potential-bias note for company-affiliated research.
 - **Method**: Selection, statement labels, grading rubric and how figures were checked.
 - **About**: Why I created the site, and how to get in touch.
 
@@ -18,4 +18,4 @@ By Zhaowen Wu · [LinkedIn](https://www.linkedin.com/in/zhaowenwu/) · [proofand
 
 - `index.html`: The complete site. One self-contained HTML file with inline CSS and JavaScript. Open it in a browser.
 
-Version 1.2 · November 2026
+Version 1.3 · November 2026
