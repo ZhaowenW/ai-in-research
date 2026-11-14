@@ -276,11 +276,12 @@ main.wrap{padding-top:20px;padding-bottom:64px}
 .study .coi{margin:10px 0 0;padding:8px 12px;border-left:3px solid var(--warn,#b7791f);background:var(--paper,#f6f6f4);font-size:.86rem;border-radius:0 8px 8px 0}
 
 /* About: portrait beside the bio */
-.aboutme{display:grid;grid-template-columns:minmax(0,240px) minmax(0,1fr);gap:clamp(24px,4vw,48px);align-items:start;max-width:68rem}
+.aboutme{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:start;max-width:72rem}
 .aboutme .portrait{margin:0;position:sticky;top:24px}
-.aboutme .portrait img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:16px;box-shadow:0 1px 2px rgba(15,20,36,.06),0 8px 24px rgba(15,20,36,.08)}
+.aboutme .portrait img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:16px;box-shadow:0 1px 2px rgba(15,20,36,.06),0 8px 24px rgba(15,20,36,.08)}
 .aboutme h2{margin-top:0}
-@media (max-width:720px){.aboutme{grid-template-columns:1fr}.aboutme .portrait{position:static;max-width:200px}}
+@media (max-width:900px){.aboutme{grid-template-columns:minmax(0,260px) minmax(0,1fr)}}
+@media (max-width:720px){.aboutme{grid-template-columns:1fr}.aboutme .portrait{position:static;max-width:280px}}
 </style>
 </head>
 <body>
@@ -921,7 +922,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
     <p>Each study gets a grade for how much weight it can carry. Each use case gets a verdict. Each verdict names the evidence that would change it. The site will cover more topics over time, and the method will stay the same.</p>
   </div>
   <div class="block aboutme">
-    <figure class="portrait"><img src="zhaowen-wu.jpg" alt="Zhaowen Wu, standing by the glass wall of a library atrium" width="640" height="799" loading="lazy"></figure>
+    <figure class="portrait"><img src="zhaowen-wu.jpg" alt="Zhaowen Wu, standing by the glass wall of a library atrium" width="720" height="959" loading="lazy"></figure>
     <div class="stack read">
     <h2>About me</h2>
     <p>I'm Zhaowen Wu. I've spent about 15 years in market and consumer research, measurement and analytics. Most recently I was a senior program officer for measurement and insights at the Gates Foundation. Before that, I worked across technology, media and telecommunications. I now run Zeta Impact Solutions, my own research and measurement practice. My training spans analytics, communication sciences and linguistics.</p>
