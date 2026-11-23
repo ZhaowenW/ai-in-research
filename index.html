@@ -300,6 +300,24 @@ main.wrap{padding-top:20px;padding-bottom:64px}
 @media (max-width:640px){.devcard{grid-template-columns:1fr;grid-template-areas:"tag" "title" "sum" "cta";padding:20px}.devcta{justify-self:start;margin-top:8px}}
 @media (prefers-reduced-motion: reduce){.devcard,.devcard:hover,.devcard .arw,.devcard:hover .arw{transform:none!important}}
 .devnote{margin-top:12px;color:var(--muted);font-style:italic}
+
+/* Umbrella sections: hub cards and in-section navigation */
+.subnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin:0 0 16px;font-size:.88rem}
+.subnav a{display:inline-flex;align-items:center;gap:4px;color:var(--muted);text-decoration:none;padding:5px 13px;border-radius:999px;border:1px solid var(--rule)}
+.subnav a:hover{color:var(--accent);border-color:var(--accent)}
+.subnav a[aria-current="page"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.subnav a.subnav-hub{border:0;padding-left:0;padding-right:2px;color:var(--ink);font-weight:600}
+.subnav a.subnav-hub:hover{color:var(--accent)}
+.subnav-sep{color:var(--muted)}
+.devpill.sm{font-size:.6rem;padding:0 7px;margin:0 0 0 2px}
+.subnav a[aria-current="page"] .devpill{color:inherit}
+.qcard.preview{border-style:dashed;background:transparent}
+.qcard.preview > .cta{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
+.qcard.preview:hover > .cta{background:var(--accent);color:var(--on-accent)}
+@media (min-width:761px){
+  .qgrid.hub2{grid-template-rows:auto auto 1fr auto;row-gap:0}
+  .qgrid.hub2 .qcard{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:14px}
+}
 </style>
 </head>
 <body>
@@ -309,10 +327,8 @@ main.wrap{padding-top:20px;padding-bottom:64px}
       <b>Proof and Wonder</b>
     </a>
     <nav class="main" aria-label="Sections">
-      <a href="#research">Audience Research</a>
-      <a href="#disclosure">AI Disclosure</a>
-      <a href="#history">Industry History</a>
-      <a href="#growing-up">Growing Up</a>
+      <a href="#disruption">The Third Disruption</a>
+      <a href="#topics">Topics</a>
       <a href="#library">Library</a>
       <a href="#method">Method</a>
       <a href="#about">About</a>
@@ -332,7 +348,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
 
   <div class="qgrid q3">
     <article class="qcard">
-      <span class="eyebrow">1 · AI in Audience Research</span>
+      <span class="eyebrow">1 · AI in Consumer Research</span>
       <p class="q">Can I trust AI to help me understand my audience?</p>
       <div class="verdict stack" style="gap:6px">
         <span class="tag assess">Our take</span>
@@ -381,7 +397,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
     <span class="eyebrow">Key stats · Two numbers for each question</span>
     <div class="statcols">
       <article class="statcol">
-        <a class="sc-head" href="#research"><span class="sc-q">AI in Audience Research</span><span class="sc-take">Reliable for reading text, not for subgroups</span></a>
+        <a class="sc-head" href="#research"><span class="sc-q">AI in Consumer Research</span><span class="sc-take">Reliable for reading text, not for subgroups</span></a>
         <div class="sc-stat"><span class="num">+25 pts</span><p>Accuracy advantage of AI text coding over crowd workers, averaged across four datasets</p><span class="src">Gilardi et al., PNAS 2023 · Grade A</span></div>
         <div class="sc-stat"><span class="num">Up to 30 pts</span><p>Error of synthetic respondents for the smallest subgroups, versus about 3 points for national political toplines</p><span class="src">Verasight reports, 2025–26 · Grade C</span></div>
       </article>
@@ -400,10 +416,74 @@ main.wrap{padding-top:20px;padding-bottom:64px}
   </div>
 </section>
 
+<!-- ============ THE THIRD DISRUPTION (HUB) ============ -->
+<section class="view" id="view-disruption" data-view="disruption">
+  <div class="hero">
+    <span class="eyebrow">The Third Disruption · AI in consumer research, now and then</span>
+    <h1>The telephone and the internet each remade consumer research. AI is the third disruption.</h1>
+    <p class="lede">The first two changed how researchers reached people. AI is the first that can also generate the answers. This section weighs what AI can do in consumer research today against what the last two disruptions predict.</p>
+  </div>
+  <div class="qgrid hub2">
+    <article class="qcard">
+      <span class="eyebrow">Now · AI in Consumer Research · <span data-count="research">26</span> studies</span>
+      <p class="q">Can I trust AI to help me understand my audience?</p>
+      <div class="verdict stack" style="gap:6px">
+        <span class="tag assess">Our take</span>
+        <p><strong>Yes</strong> for coding open-ended text and ranking options, as long as a person checks a sample.</p>
+        <p><strong>Only after validation</strong> for whole-population estimates.</p>
+        <p><strong>Not yet</strong> for subgroups, even with 2026 frontier models.</p>
+      </div>
+      <a class="cta" href="#research">See the evidence by level of detail <span class="arw" aria-hidden="true">→</span></a>
+    </article>
+    <article class="qcard">
+      <span class="eyebrow">Then · Industry History</span>
+      <p class="q">What do the telephone and internet eras predict for AI?</p>
+      <div class="verdict stack" style="gap:6px">
+        <span class="tag assess">Our take</span>
+        <p>Both times, most of the work moved to the cheaper method while the old one became the benchmark for high-stakes work.</p>
+        <p>AI adds something new, because it can generate the answers rather than just collect them.</p>
+      </div>
+      <a class="cta" href="#history">See the history and what it predicts <span class="arw" aria-hidden="true">→</span></a>
+    </article>
+  </div>
+</section>
+
+<!-- ============ TOPICS (HUB) ============ -->
+<section class="view" id="view-topics" data-view="topics">
+  <div class="hero">
+    <span class="eyebrow">Topics</span>
+    <h1>Focused questions about how people respond, learn and trust as AI spreads</h1>
+    <p class="lede">Each topic follows one question through the evidence. Topics with enough research get graded studies and verdicts. Newer ones start as previews and fill in as the evidence comes together.</p>
+  </div>
+  <div class="qgrid hub2">
+    <article class="qcard">
+      <span class="eyebrow">Reactions to AI Disclosure · <span data-count="disclosure">26</span> studies</span>
+      <p class="q">How will my audience respond when they know AI was involved?</p>
+      <div class="verdict stack" style="gap:6px">
+        <span class="tag assess">Our take</span>
+        <p>Disclosure usually costs trust, but how you disclose decides how much.</p>
+        <p>Saying specifically what AI did, and keeping people visibly in charge, narrows the gap.</p>
+      </div>
+      <a class="cta" href="#disclosure">See what changes the size of the drop <span class="arw" aria-hidden="true">→</span></a>
+    </article>
+    <article class="qcard preview">
+      <span class="eyebrow">Growing Up · Preview</span>
+      <p class="q">What happens when children can explore a world of knowledge before they can read?</p>
+      <div class="stack" style="gap:6px">
+        <span class="tag open">In development</span>
+        <p>An emerging project on childhood, culture and the future of learning. Evidence, findings and new questions will be added as it unfolds.</p>
+      </div>
+      <a class="cta" href="#growing-up">Read the preview <span class="arw" aria-hidden="true">→</span></a>
+    </article>
+  </div>
+  <p class="muted read" style="font-size:.92rem;margin-top:16px">More topics will be added over time, each selected and graded with the same <a href="#method">method</a>.</p>
+</section>
+
 <!-- ============ RESEARCH ============ -->
 <section class="view" id="view-research" data-view="research">
+  <nav class="subnav" aria-label="The Third Disruption"><a class="subnav-hub" href="#disruption">The Third Disruption</a><span class="subnav-sep" aria-hidden="true">/</span><a href="#research">Now: AI in Consumer Research</a><a href="#history">Then: Industry History</a></nav>
   <div class="hero">
-    <span class="eyebrow">Collection 1 · AI in Audience Research · <span data-count="research">26</span> studies</span>
+    <span class="eyebrow">Now · AI in Consumer Research · <span data-count="research">26</span> studies</span>
     <h1>AI can read your audience's words. It can't yet stand in for your audience.</h1>
     <p class="lede"><strong>Key question:</strong> Can I trust AI to help me understand my audience?</p>
   </div>
@@ -525,8 +605,9 @@ main.wrap{padding-top:20px;padding-bottom:64px}
 
 <!-- ============ DISCLOSURE ============ -->
 <section class="view" id="view-disclosure" data-view="disclosure">
+  <nav class="subnav" aria-label="Topics"><a class="subnav-hub" href="#topics">Topics</a><span class="subnav-sep" aria-hidden="true">/</span><a href="#disclosure">AI Disclosure</a><a href="#growing-up">Growing Up <span class="devpill sm">Preview</span></a></nav>
   <div class="hero">
-    <span class="eyebrow">Collection 2 · Reactions to AI Disclosure · <span data-count="disclosure">26</span> studies</span>
+    <span class="eyebrow">Topic · Reactions to AI Disclosure · <span data-count="disclosure">26</span> studies</span>
     <h1>Disclosure usually costs trust, but how you disclose decides how much.</h1>
     <p class="lede"><strong>Key question:</strong> How will my audience respond when they know AI was involved?</p>
   </div>
@@ -645,15 +726,16 @@ main.wrap{padding-top:20px;padding-bottom:64px}
 
 <!-- ============ HISTORY ============ -->
 <section class="view" id="view-history" data-view="history">
+  <nav class="subnav" aria-label="The Third Disruption"><a class="subnav-hub" href="#disruption">The Third Disruption</a><span class="subnav-sep" aria-hidden="true">/</span><a href="#research">Now: AI in Consumer Research</a><a href="#history">Then: Industry History</a></nav>
   <div class="hero">
     <span class="eyebrow">Industry history · Market and consumer research</span>
     <h1>Research has been disrupted twice before, and the pattern is instructive.</h1>
-    <p class="lede"><strong>Key question:</strong> Has research been through a change like this before?</p>
+    <p class="lede"><strong>Key question:</strong> What do the telephone and internet eras predict for AI?</p>
   </div>
 
   <div class="block callout stack read" style="max-width:none">
     <span class="tag assess">Our take</span>
-    <p>Yes, twice. The telephone and then the internet each made research cheaper and faster, and each time methodologists warned, correctly, about a specific loss of quality. Most of the work moved to the new method anyway, while the old method survived as the benchmark for work that needed its quality. AI looks like a third change of this kind, with one important difference: earlier technologies changed how researchers reached people, while AI can generate the answers itself.</p>
+    <p>The telephone and then the internet each made research cheaper and faster, and each time methodologists warned, correctly, about a specific loss of quality. Most of the work moved to the new method anyway, while the old method survived as the benchmark for work that needed its quality. AI looks like a third change of this kind, with one important difference: earlier technologies changed how researchers reached people, while AI can generate the answers itself.</p>
   </div>
 
   <div class="block stack">
@@ -768,7 +850,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
       <table>
         <thead><tr><th>Framework</th><th>Prediction</th><th>Evidence so far</th><th>Signal that would confirm or refute it</th></tr></thead>
         <tbody>
-          <tr><td><strong>Disruptive innovation</strong></td><td>AI methods win volume first in low-stakes, exploratory work, such as early concept screens, message pretests and teams that did little research before, and move upmarket only as quality improves.</td><td>Our <a href="#research">AI in Audience Research</a> verdicts: reliable for ranking options, not for subgroups. About 48% of projects are already done in-house (ESOMAR).</td><td>The share of final decisions, not early screens, that rest on synthetic data, tracked by industry surveys not run by vendors.</td></tr>
+          <tr><td><strong>Disruptive innovation</strong></td><td>AI methods win volume first in low-stakes, exploratory work, such as early concept screens, message pretests and teams that did little research before, and move upmarket only as quality improves.</td><td>Our <a href="#research">AI in Consumer Research</a> verdicts: reliable for ranking options, not for subgroups. About 48% of projects are already done in-house (ESOMAR).</td><td>The share of final decisions, not early screens, that rest on synthetic data, tracked by industry surveys not run by vendors.</td></tr>
           <tr><td><strong>Total survey error</strong></td><td>The field names and measures a new error source, model error, and professional bodies issue guidance, as AAPOR did for online panels in 2010.</td><td>The UK Market Research Society's Delphi Group published a report on synthetic participants in 2024, but no accepted error framework exists yet. Studies show this error shifts by topic (Boelaert 2025).</td><td>Published standards and benchmark tests from AAPOR, ESOMAR or MRS.</td></tr>
           <tr><td><strong>Old method as benchmark</strong></td><td>Data from real people becomes more valuable per unit, used less often but as the reference that calibrates AI methods.</td><td>Fine-tuning on real survey answers improved AI accuracy (Brand 2025; Kim &amp; Lee 2024), interview-based simulations required real interviews (Park 2024), and probability panels grew from 7 to 23 national pollsters (Pew).</td><td>Growth or decline in probability panels and high-quality human samples.</td></tr>
           <tr><td><strong>Task-based model</strong></td><td>Displacement in routine fielding, routine interviews, coding, tables and first-draft reports; reinstatement in validation design, benchmark upkeep, model audits, synthesis across sources and framing the business decision.</td><td>AI coding beats crowd workers on defined categories (Gilardi 2023), while expert moderators still outperform AI on rapport and unexpected insight (Ipsos 2025).</td><td>Job postings and team structures: fewer fieldwork and coding roles, more roles in validation, data science and research strategy.</td></tr>
@@ -820,6 +902,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
 
 <!-- ============ GROWING UP (PREVIEW) ============ -->
 <section class="view" id="view-growing-up" data-view="growing-up">
+  <nav class="subnav" aria-label="Topics"><a class="subnav-hub" href="#topics">Topics</a><span class="subnav-sep" aria-hidden="true">/</span><a href="#disclosure">AI Disclosure</a><a href="#growing-up">Growing Up <span class="devpill sm">Preview</span></a></nav>
   <div class="hero">
     <span class="eyebrow"><span class="devpill">In development</span> Childhood, Culture &amp; the Future of Learning</span>
     <h1>Growing Up in a World Where Every Question Has an Answer</h1>
@@ -866,7 +949,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
     <a href="#method">Full rubric →</a>
   </div>
   <div class="filters">
-    <label for="f-col">Collection<select id="f-col"><option value="all">All</option><option value="research">AI in Audience Research</option><option value="disclosure">Reactions to AI Disclosure</option></select></label>
+    <label for="f-col">Collection<select id="f-col"><option value="all">All</option><option value="research">AI in Consumer Research</option><option value="disclosure">Reactions to AI Disclosure</option></select></label>
     <label for="f-grade">Grade<select id="f-grade"><option value="all">All</option><option value="A">A · Strong</option><option value="B">B · Moderate</option><option value="C">C · Limited</option></select></label>
     <label for="f-design">Design<select id="f-design"><option value="all">All</option></select></label>
     <label for="f-src">Authors<select id="f-src"><option value="all">All</option><option value="ind">Independent</option><option value="co">Company-affiliated</option></select></label>
@@ -888,12 +971,12 @@ main.wrap{padding-top:20px;padding-bottom:64px}
     <div class="panel">
       <h3>Selection</h3>
       <ul class="clean">
-        <li><strong>AI in Audience Research</strong> includes studies that compare AI output with data from real people on tasks used in audience, market, consumer or opinion research.</li>
+        <li><strong>AI in Consumer Research</strong> includes studies that compare AI output with data from real people on tasks used in audience, market, consumer or opinion research.</li>
         <li><strong>Reactions to AI Disclosure</strong> includes studies that randomly vary whether people believe AI was involved, plus large representative surveys of attitudes toward AI-made content.</li>
         <li><strong>Growing Up</strong> is a preview topic in development and has no graded studies yet. Before evidence is added, it will get its own selection rule and use the same grading rubric.</li>
         <li>We include research from AI developers such as Anthropic, Google and Microsoft, and from research vendors and platforms such as Qualtrics, Kantar, Ipsos, Getty Images and Adobe, because they often have data no one else has. Each of these studies carries a “Potential bias” note naming the commercial interest, is graded lower on independence and never supports a verdict on its own. Use the Authors filter in the <a href="#library">Study library</a> to see them separately.</li>
         <li>We favor peer-reviewed studies, large or preregistered samples and settings close to audience research and marketing communications, while including influential preprints and industry reports when they test a common use case. Their grades reflect their limits.</li>
-        <li>This version covers <span data-count="all">52</span> studies: <span data-count="research">26</span> in AI in Audience Research and <span data-count="disclosure">26</span> in Reactions to AI Disclosure.</li>
+        <li>This version covers <span data-count="all">52</span> studies: <span data-count="research">26</span> in AI in Consumer Research and <span data-count="disclosure">26</span> in Reactions to AI Disclosure.</li>
       </ul>
     </div>
     <div class="panel">
@@ -978,13 +1061,12 @@ main.wrap{padding-top:20px;padding-bottom:64px}
   </div>
   <div class="block stack read">
     <p>If you work in research or marketing, you've probably felt the pressure. Every week someone says AI will replace surveys and interviews, and someone else says AI-generated research is worthless. Both claims are loud, and few come with evidence.</p>
-    <p><strong>Proof and Wonder</strong> reviews the published research so you can see what the evidence actually shows. It takes one large, vague worry and breaks it into questions you can check:</p>
+    <p><strong>Proof and Wonder</strong> reviews the published research so you can see what the evidence actually shows. It takes one large, vague worry and breaks it into questions you can check, in two parts:</p>
     <ul class="clean">
-      <li>Which research tasks can AI do well today?</li>
-      <li>How do audiences react when they learn AI was involved?</li>
-      <li>What happened the last time technology reshaped the research industry?</li>
+      <li><a href="#disruption"><strong>The Third Disruption</strong></a> asks which consumer research tasks AI can do well today, and what the telephone and internet eras predict about what comes next.</li>
+      <li><a href="#topics"><strong>Topics</strong></a> follow focused questions about how people respond, learn and trust as AI spreads, starting with reactions to AI disclosure and, in development, growing up in a world where every question has an answer.</li>
     </ul>
-    <p>Each study gets a grade for how much weight it can carry. Each use case gets a verdict. Each verdict names the evidence that would change it. The site will cover more topics over time, and the method will stay the same. The first new one, on how children learn when every question has an answer, is <a href="#growing-up">in development</a>.</p>
+    <p>Each study gets a grade for how much weight it can carry. Each use case gets a verdict. Each verdict names the evidence that would change it. New topics will be added over time, and the method will stay the same.</p>
   </div>
   <div class="block aboutme">
     <figure class="portrait"><img src="zhaowen-wu.jpg" alt="Zhaowen Wu, standing by the glass wall of a library atrium" width="720" height="959" loading="lazy"></figure>
@@ -1003,7 +1085,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
 
 <footer class="site">
   <div class="wrap row">
-    <span>Proof and Wonder · Version 1.5 ·<span data-count="all">52</span> studies · Updated November 2026</span>
+    <span>Proof and Wonder · Version 1.6 · <span data-count="all">52</span> studies · Updated November 2026</span>
     <span>By Zhaowen Wu</span>
   </div>
 </footer>
@@ -1567,13 +1649,19 @@ function renderLibrary(){
 ["f-col","f-grade","f-design","f-src","f-sort"].forEach(id=>document.getElementById(id).addEventListener("change",renderLibrary));
 renderLibrary();
 
-const VIEWS=["home","research","disclosure","history","growing-up","library","method","about"];
+const VIEWS=["home","disruption","research","history","topics","disclosure","growing-up","library","method","about"];
+/* Pages that sit under an umbrella highlight that umbrella in the main nav */
+const PARENT={research:"disruption",history:"disruption",disclosure:"topics","growing-up":"topics"};
+function mark(links,target){links.forEach(a=>{a.getAttribute("href")==="#"+target?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current");});}
+function showView(v){
+  document.querySelectorAll("section.view").forEach(s=>s.classList.toggle("active",s.dataset.view===v));
+  mark(document.querySelectorAll("nav.main a"),PARENT[v]||v);
+  mark(document.querySelectorAll(".subnav a"),v);
+  window.scrollTo(0,0);
+}
 function route(){
   const h=(location.hash||"#home").slice(1);
-  const v=VIEWS.includes(h)?h:"home";
-  document.querySelectorAll("section.view").forEach(s=>s.classList.toggle("active",s.dataset.view===v));
-  document.querySelectorAll("nav.main a").forEach(a=>{a.getAttribute("href")==="#"+v?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current");});
-  window.scrollTo(0,0);
+  showView(VIEWS.includes(h)?h:"home");
 }
 window.addEventListener("hashchange",route);
 route();

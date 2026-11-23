@@ -7,10 +7,12 @@ By Zhaowen Wu · [LinkedIn](https://www.linkedin.com/in/zhaowenwu/) · [proofand
 ## Contents
 
 - **Home**: What the site covers, the headline verdicts and key stats.
-- **AI in Audience Research**: Can I trust AI to help me understand my audience?
-- **Reactions to AI Disclosure**: How will my audience respond when they know AI was involved?
-- **Industry History**: Has research been through a change like this before?
-- **Growing Up** (preview, in development): What happens when children can explore a world of knowledge before they can read?
+- **The Third Disruption**: AI in consumer research, now and then.
+  - **AI in Consumer Research**: Can I trust AI to help me understand my audience?
+  - **Industry History**: What do the telephone and internet eras predict for AI?
+- **Topics**: Focused questions about how people respond, learn and trust as AI spreads.
+  - **Reactions to AI Disclosure**: How will my audience respond when they know AI was involved?
+  - **Growing Up** (preview, in development): What happens when children can explore a world of knowledge before they can read?
 - **Study library**: 99 studies, each with an evidence grade (A, B, C) and a potential-bias note for company-affiliated research.
 - **Method**: Selection, statement labels, grading rubric and how figures were checked.
 - **About**: Why I created the site, and how to get in touch.
@@ -19,4 +21,4 @@ By Zhaowen Wu · [LinkedIn](https://www.linkedin.com/in/zhaowenwu/) · [proofand
 
 - `index.html`: The complete site. One self-contained HTML file with inline CSS and JavaScript. Open it in a browser.
 
-Version 1.5 · November 2026
+Version 1.6 · November 2026
