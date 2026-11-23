@@ -1,6 +1,6 @@
 # Proof and Wonder
 
-A review of how AI shapes market research, marketing communications, and more. Each study is graded for how much evidence it provides, for insights and marketing communications leaders.
+Evidence on AI in consumer research, and on how people respond, learn and trust. Each study is graded for how much evidence it provides, for insights and marketing communications leaders.
 
 By Zhaowen Wu · [LinkedIn](https://www.linkedin.com/in/zhaowenwu/) · [proofandwonder.net](https://proofandwonder.net)
 
@@ -20,7 +20,7 @@ By Zhaowen Wu · [LinkedIn](https://www.linkedin.com/in/zhaowenwu/) · [proofand
 ## Files
 
 - `index.html`: The complete site. One HTML file with inline CSS and JavaScript. Open it in a browser.
-- `images/`: Illustrations from [Better Images of AI](https://betterimagesofai.org), used under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Each is credited on the image and in the Method page's picture credits.
+- `images/`: Illustrations from [Better Images of AI](https://betterimagesofai.org), used under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Each is credited on the image and in the picture credits on the Library page.
 - `zhaowen-wu.jpg`: Portrait on the About page.
 
 Version 1.7 · November 2026
