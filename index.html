@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Proof and Wonder · How AI shapes market research and marketing communications</title>
+<title>Proof and Wonder · How AI shapes market research, marketing communications, and more</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -282,6 +282,24 @@ main.wrap{padding-top:20px;padding-bottom:64px}
 .aboutme h2{margin-top:0}
 @media (max-width:900px){.aboutme{grid-template-columns:minmax(0,260px) minmax(0,1fr)}}
 @media (max-width:720px){.aboutme{grid-template-columns:1fr}.aboutme .portrait{position:static;max-width:280px}}
+
+/* Preview topics: clearly separate from topics with graded evidence */
+.devstrip{margin-top:36px;display:flex;flex-direction:column;gap:10px}
+.devcard{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"tag cta" "title cta" "sum cta";gap:6px 28px;align-items:center;padding:22px 26px;border:1.5px dashed var(--rule);border-radius:16px;color:var(--ink);text-decoration:none;transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+.devcard:hover{border-style:solid;border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft);transform:translateY(-2px)}
+.devcard:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.devtag,.devpill{display:inline-block;font-family:var(--font-mono);font-size:.7rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:2px 10px;border-radius:999px;border:1px solid currentColor;color:var(--accent)}
+.devtag{grid-area:tag;justify-self:start}
+.devpill{margin-right:8px;vertical-align:1px}
+.devtitle{grid-area:title;font-family:var(--font-display);font-weight:700;letter-spacing:-.015em;font-size:1.3rem;line-height:1.2}
+.devsum{grid-area:sum;color:var(--muted);font-size:.95rem;max-width:62ch}
+.devcta{grid-area:cta;display:inline-flex;align-items:center;gap:10px;padding:11px 18px;border-radius:999px;border:1.5px solid var(--accent);color:var(--accent);font-weight:600;white-space:nowrap;transition:background-color .18s ease,color .18s ease}
+.devcard .arw{display:inline-block;transition:transform .18s ease}
+.devcard:hover .devcta{background:var(--accent);color:var(--on-accent)}
+.devcard:hover .arw{transform:translateX(5px)}
+@media (max-width:640px){.devcard{grid-template-columns:1fr;grid-template-areas:"tag" "title" "sum" "cta";padding:20px}.devcta{justify-self:start;margin-top:8px}}
+@media (prefers-reduced-motion: reduce){.devcard,.devcard:hover,.devcard .arw,.devcard:hover .arw{transform:none!important}}
+.devnote{margin-top:12px;color:var(--muted);font-style:italic}
 </style>
 </head>
 <body>
@@ -291,10 +309,11 @@ main.wrap{padding-top:20px;padding-bottom:64px}
       <b>Proof and Wonder</b>
     </a>
     <nav class="main" aria-label="Sections">
-      <a href="#research">AI in Audience Research</a>
-      <a href="#disclosure">Reactions to AI Disclosure</a>
+      <a href="#research">Audience Research</a>
+      <a href="#disclosure">AI Disclosure</a>
       <a href="#history">Industry History</a>
-      <a href="#library">Study library</a>
+      <a href="#growing-up">Growing Up</a>
+      <a href="#library">Library</a>
       <a href="#method">Method</a>
       <a href="#about">About</a>
     </nav>
@@ -308,7 +327,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
   <div class="hero">
     <p class="kicker">A review of how AI shapes market research, marketing communications, and more</p>
     <h1>What does the evidence actually say about AI and audiences?</h1>
-    <p class="lede">This site reviews the published research on AI and audiences for insights and marketing communications leaders. It doesn't run new studies. Instead, it reads the ones that exist, grades how much weight each can bear and translates the findings into positions you can act on, organized around three questions.</p>
+    <p class="lede">This site reviews the published research on AI and audiences for insights and marketing communications leaders. It doesn't run new studies. Instead, it reads the ones that exist, grades how much weight each can bear and translates the findings into positions you can act on, organized around three questions, with a fourth topic now in development.</p>
   </div>
 
   <div class="qgrid q3">
@@ -347,6 +366,16 @@ main.wrap{padding-top:20px;padding-bottom:64px}
     </article>
   </div>
   <p class="muted read" style="font-size:.92rem;margin-top:16px">Every study carries an evidence grade, every use case carries a verdict, and every verdict names the evidence that would change it. The <a href="#library">Study library</a> lists all <span data-count="all">52</span> studies, and the <a href="#method">Method</a> page explains how they're graded.</p>
+
+  <div class="devstrip">
+    <span class="eyebrow">In development · A new topic, evidence to come</span>
+    <a class="devcard" href="#growing-up">
+      <span class="devtag">Preview</span>
+      <span class="devtitle">Growing Up in a World Where Every Question Has an Answer</span>
+      <span class="devsum">What happens when children can explore a world of knowledge before they can read? An emerging project on childhood, culture and the future of learning.</span>
+      <span class="devcta">Read the preview <span class="arw" aria-hidden="true">→</span></span>
+    </a>
+  </div>
 
   <div class="block stack">
     <span class="eyebrow">Key stats · Two numbers for each question</span>
@@ -789,6 +818,40 @@ main.wrap{padding-top:20px;padding-bottom:64px}
   </div>
 </section>
 
+<!-- ============ GROWING UP (PREVIEW) ============ -->
+<section class="view" id="view-growing-up" data-view="growing-up">
+  <div class="hero">
+    <span class="eyebrow"><span class="devpill">In development</span> Childhood, Culture &amp; the Future of Learning</span>
+    <h1>Growing Up in a World Where Every Question Has an Answer</h1>
+  </div>
+
+  <div class="block stack read">
+    <p>My five-year-old knows things I couldn't have imagined knowing at his age. He's traveled internationally, encountered different cultures, and can explore almost any question that comes to mind. When he wonders how something works, we can look it up together, talk about it, and sometimes watch a video that brings the explanation to life.</p>
+    <p>Yet he's still learning to read.</p>
+    <p>Growing up in China in the 1980s, my experience was very different. Learning to read and write was a major focus of early education, and access to information was far more limited. Today, I watch my son build an understanding of the world largely through listening, conversation, and experience—before he can independently read about it.</p>
+    <p>It makes me wonder: <strong>What happens when children can explore a world of knowledge before they can read? And how might growing up in this information environment shape the way they learn, think, and trust?</strong></p>
+    <p>Children have always learned through conversations, observations, and experiences. But the internet, video, and now conversational AI are changing how quickly and easily they can access explanations—and who or what provides them.</p>
+  </div>
+
+  <div class="block panel read">
+    <h3>Questions I'm exploring</h3>
+    <p>I'm curious about the implications beyond literacy and education.</p>
+    <ul class="clean" style="margin-top:10px">
+      <li>Does easier access to information deepen children's curiosity and understanding, or change how they approach uncertainty and independent problem-solving?</li>
+      <li>How might growing up with conversational, visual, and personalized information shape their expectations of media and technology?</li>
+      <li>How do children learn whom to trust when answers can come from almost anywhere?</li>
+    </ul>
+    <p style="margin-top:12px">These are questions, not conclusions.</p>
+  </div>
+
+  <div class="block stack read">
+    <h2>What this will cover</h2>
+    <p>This emerging research project will explore the intersection of developmental psychology, literacy, cognitive science, and cultural change. I'll examine what research already tells us about how children acquire knowledge, how evolving information environments may influence learning and behavior, and where the evidence is still emerging.</p>
+    <p><strong>The bigger question isn't simply what children know today, but how the changing ways we access knowledge might shape how we understand and engage with the world.</strong></p>
+    <p class="devnote">Research in development. Evidence, findings, and new questions will be added as the exploration unfolds.</p>
+  </div>
+</section>
+
 <!-- ============ LIBRARY ============ -->
 <section class="view" id="view-library" data-view="library">
   <div class="hero">
@@ -827,6 +890,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
       <ul class="clean">
         <li><strong>AI in Audience Research</strong> includes studies that compare AI output with data from real people on tasks used in audience, market, consumer or opinion research.</li>
         <li><strong>Reactions to AI Disclosure</strong> includes studies that randomly vary whether people believe AI was involved, plus large representative surveys of attitudes toward AI-made content.</li>
+        <li><strong>Growing Up</strong> is a preview topic in development and has no graded studies yet. Before evidence is added, it will get its own selection rule and use the same grading rubric.</li>
         <li>We include research from AI developers such as Anthropic, Google and Microsoft, and from research vendors and platforms such as Qualtrics, Kantar, Ipsos, Getty Images and Adobe, because they often have data no one else has. Each of these studies carries a “Potential bias” note naming the commercial interest, is graded lower on independence and never supports a verdict on its own. Use the Authors filter in the <a href="#library">Study library</a> to see them separately.</li>
         <li>We favor peer-reviewed studies, large or preregistered samples and settings close to audience research and marketing communications, while including influential preprints and industry reports when they test a common use case. Their grades reflect their limits.</li>
         <li>This version covers <span data-count="all">52</span> studies: <span data-count="research">26</span> in AI in Audience Research and <span data-count="disclosure">26</span> in Reactions to AI Disclosure.</li>
@@ -920,7 +984,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
       <li>How do audiences react when they learn AI was involved?</li>
       <li>What happened the last time technology reshaped the research industry?</li>
     </ul>
-    <p>Each study gets a grade for how much weight it can carry. Each use case gets a verdict. Each verdict names the evidence that would change it. The site will cover more topics over time, and the method will stay the same.</p>
+    <p>Each study gets a grade for how much weight it can carry. Each use case gets a verdict. Each verdict names the evidence that would change it. The site will cover more topics over time, and the method will stay the same. The first new one, on how children learn when every question has an answer, is <a href="#growing-up">in development</a>.</p>
   </div>
   <div class="block aboutme">
     <figure class="portrait"><img src="zhaowen-wu.jpg" alt="Zhaowen Wu, standing by the glass wall of a library atrium" width="720" height="959" loading="lazy"></figure>
@@ -939,7 +1003,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
 
 <footer class="site">
   <div class="wrap row">
-    <span>Proof and Wonder · Version 1.4 · <span data-count="all">52</span> studies · Updated November 2026</span>
+    <span>Proof and Wonder · Version 1.5 ·<span data-count="all">52</span> studies · Updated November 2026</span>
     <span>By Zhaowen Wu</span>
   </div>
 </footer>
@@ -1503,7 +1567,7 @@ function renderLibrary(){
 ["f-col","f-grade","f-design","f-src","f-sort"].forEach(id=>document.getElementById(id).addEventListener("change",renderLibrary));
 renderLibrary();
 
-const VIEWS=["home","research","disclosure","history","library","method","about"];
+const VIEWS=["home","research","disclosure","history","growing-up","library","method","about"];
 function route(){
   const h=(location.hash||"#home").slice(1);
   const v=VIEWS.includes(h)?h:"home";
