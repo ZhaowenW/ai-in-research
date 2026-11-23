@@ -6,7 +6,7 @@
 <title>Proof and Wonder · How AI shapes market research, marketing communications, and more</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Schibsted+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* Layout idea: an evidence review read like a research memo. Narrow reading column, wide evidence tables, one cobalt accent, grades and verdicts carried by semantic chips. */
 :root{
@@ -318,20 +318,142 @@ main.wrap{padding-top:20px;padding-bottom:64px}
   .qgrid.hub2{grid-template-rows:auto auto 1fr auto;row-gap:0}
   .qgrid.hub2 .qcard{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:14px}
 }
+
+/* ================= Collage design (version 1.7) =================
+   Warm paper, mono labels and editorial serif; a color for each section;
+   artist illustrations from Better Images of AI (CC BY 4.0), credited on each image. */
+:root{--paper:#FFF6F0;--surface:#FFFFFF;--ink:#17140F;--muted:#5E5850;--rule:#EADBCF;--accent:#3A3FA0;--accent-soft:#E7E7F7;--on-accent:#fff;--hl:#FFE14D;--hl-ink:#17140F;--c-now:#3A3FA0;--c-then:#E7AE34;--c-disc:#E5528D;--c-grow:#49A5E0;--font-display:"Instrument Serif",Georgia,"Times New Roman",serif;--font-body:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;--font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#13110E;--surface:#1C1915;--ink:#F4EEE6;--muted:#B8AE9F;--rule:#352E26;--accent:#A6AAFF;--accent-soft:#262848;--on-accent:#13110E;--c-now:#5B61D6}}
+:root[data-theme="dark"]{--paper:#13110E;--surface:#1C1915;--ink:#F4EEE6;--muted:#B8AE9F;--rule:#352E26;--accent:#A6AAFF;--accent-soft:#262848;--on-accent:#13110E;--c-now:#5B61D6}
+.c-now{--tone:var(--c-now)} .c-then{--tone:var(--c-then)} .c-disc{--tone:var(--c-disc)} .c-grow{--tone:var(--c-grow)} .c-hl{--tone:var(--hl)}
+
+/* Type */
+h1,h2,.qcard .q,.devtitle,.sc-take{font-family:var(--font-display);font-weight:400;letter-spacing:-.01em}
+h1{font-size:clamp(2.6rem,5.6vw,4.4rem);line-height:1.02}
+h2{font-size:clamp(1.8rem,3vw,2.4rem)}
+h3{font-family:var(--font-body);font-weight:700;letter-spacing:-.01em}
+.eyebrow,nav.main a,.subnav,.sc-q,.devtag,.devpill,.art figcaption{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.07em}
+.ico{width:1.25em;height:1.25em;flex:none;vertical-align:-.25em;margin-right:.45em;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.ico-sprite{position:absolute;width:0;height:0;overflow:hidden}
+
+/* Header */
+header.site{background:var(--paper);border-bottom:1.5px solid var(--ink)}
+.wrap.bar{background:transparent;border:0;border-radius:0;max-width:1120px;margin:0 auto;padding:14px 20px}
+.brand b{font-family:var(--font-display);font-weight:400;font-size:1.75rem;letter-spacing:-.01em}
+.brand b em{font-style:italic;color:var(--accent)}
+nav.main{gap:2px}
+nav.main a{font-size:.76rem;border-radius:0;padding:7px 11px;color:var(--ink)}
+nav.main a:hover{background:transparent;color:var(--ink);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}
+nav.main a[aria-current="page"]{background:var(--hl);color:var(--hl-ink)}
+main.wrap{padding-top:36px}
+
+/* Page heroes: text beside an illustration */
+.hero{background:transparent;border-radius:0;padding:0;max-width:none}
+.hero.has-art{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);column-gap:clamp(24px,4vw,56px);align-items:center}
+.hero.has-art > :not(.art){grid-column:1}
+.hero.has-art > .art{grid-column:2;grid-row:1 / span 6}
+.hero h1{max-width:15em}
+.hero .eyebrow,.kicker{justify-self:start;display:inline-flex;align-items:center;background:var(--hl);color:var(--hl-ink);padding:4px 9px;font-size:.74rem;font-weight:500;margin:0}
+.kicker{text-transform:none;letter-spacing:.01em;font-size:.84rem}
+.hero p.lede{color:var(--muted);font-size:1.12rem}
+.hero .devpill{color:var(--hl-ink);border-color:var(--hl-ink)}
+@media (max-width:860px){.hero.has-art{grid-template-columns:1fr}.hero.has-art > .art{grid-column:1;grid-row:auto;order:-1;width:100%;aspect-ratio:16/9}}
+
+/* Illustrations */
+.art{position:relative;margin:0;background:var(--surface);border:1.5px solid var(--ink);overflow:hidden;aspect-ratio:4/3}
+.art img{display:block;width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 50%);transition:transform .4s ease}
+.hero .art{box-shadow:10px 10px 0 var(--tone,var(--hl))}
+@media (max-width:860px){.hero .art{box-shadow:6px 6px 0 var(--tone,var(--hl))}}
+.art figcaption{position:absolute;left:0;bottom:0;z-index:2;background:var(--paper);color:var(--ink);font-size:.6rem;line-height:1.35;padding:4px 8px;border-top:1.5px solid var(--ink);border-right:1.5px solid var(--ink);max-width:88%}
+.art figcaption a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.qcard > .art figcaption,.devcard > .art figcaption{font-size:.54rem;letter-spacing:.04em;padding:3px 6px;max-width:100%}
+.art.diptych{display:grid;grid-template-columns:1fr 1fr}
+.art.diptych > div{position:relative;overflow:hidden}
+.art.diptych > div + div{border-left:1.5px solid var(--ink)}
+
+/* Cards */
+.qcard,.ladder,.callout,.panel,.chain,.tablewrap,.chart,.study,.gradekey,.devcard{border-radius:0}
+.qcard{border:1.5px solid var(--ink);background:var(--surface);padding:22px;gap:14px;box-shadow:none;transition:transform .2s ease,box-shadow .2s ease}
+.qcard > .art{margin:-22px -22px 0;border:0;border-bottom:1.5px solid var(--ink);aspect-ratio:16/9}
+.qcard > .eyebrow{background:transparent;color:var(--ink);padding:0;border-radius:0;font-size:.7rem;display:flex;align-items:center}
+.qcard > .q{font-size:1.75rem;line-height:1.1}
+.qcard > .cta{background:var(--ink);color:var(--paper);border-radius:0;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.06em;font-size:.78rem;font-weight:500}
+.qcard:hover{transform:translate(-4px,-4px);box-shadow:8px 8px 0 var(--tone,var(--ink));border-color:var(--ink)}
+.qcard:hover > .cta{background:var(--hl);color:var(--hl-ink)}
+.qcard:hover .art img{transform:scale(1.04)}
+.qcard.preview{border-style:dashed;background:transparent}
+.qcard.preview > .art{border-bottom-style:dashed}
+.qcard.preview > .cta{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+@media (min-width:961px){.qgrid.q3.with-art{grid-template-rows:auto auto auto 1fr auto}.qgrid.q3.with-art .qcard{grid-row:span 5}}
+@media (min-width:761px){.qgrid.hub2.with-art{grid-template-rows:auto auto auto 1fr auto}.qgrid.hub2.with-art .qcard{grid-row:span 5}}
+@media (prefers-reduced-motion: reduce){.qcard:hover .art img{transform:none}}
+
+/* In-development card */
+.devcard{border:1.5px dashed var(--ink);grid-template-columns:200px minmax(0,1fr) auto;grid-template-areas:"art tag cta" "art title cta" "art sum cta";padding:18px 24px 18px 18px}
+.devcard > .art{grid-area:art;aspect-ratio:4/3;align-self:center}
+.devtitle{font-size:1.65rem;line-height:1.1}
+.devtag{color:var(--ink)}
+.devcta{border-radius:0;border-color:var(--ink);color:var(--ink);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.06em;font-size:.76rem}
+.devcard:hover{border-style:solid;box-shadow:8px 8px 0 var(--c-grow);transform:translate(-4px,-4px);border-color:var(--ink)}
+.devcard:hover .devcta{background:var(--hl);color:var(--hl-ink)}
+@media (max-width:640px){.devcard{grid-template-columns:1fr;grid-template-areas:"art" "tag" "title" "sum" "cta"}}
+
+/* Key stats */
+.statcol{border-top:2px solid var(--ink)}
+.sc-q{border-radius:0;font-size:.66rem;color:#fff}
+.statcol:nth-child(1) .sc-q{background:var(--c-now)}
+.statcol:nth-child(2) .sc-q{background:var(--c-disc)}
+.statcol:nth-child(3) .sc-q{background:var(--c-then);color:#17140F}
+.sc-take{font-size:1.5rem;line-height:1.15}
+.sc-stat .num,.stat .num{font-family:var(--font-display);font-weight:400;font-size:2.8rem;letter-spacing:-.01em}
+
+/* In-section navigation */
+.subnav{font-size:.72rem}
+.subnav a{border-radius:0;border:1.5px solid var(--ink);color:var(--ink);padding:5px 11px}
+.subnav a:hover{background:var(--hl);color:var(--hl-ink);border-color:var(--ink)}
+.subnav a[aria-current="page"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.subnav a.subnav-hub{border:0}
+.subnav a.subnav-hub:hover{background:var(--hl)}
+
+/* Body content */
+.callout{border:1.5px solid var(--ink);border-left:8px solid var(--accent)}
+.callout.firm{border-left-color:var(--bad)}
+.panel,.ladder,.chain,.tablewrap,.chart,.study{border:1.5px solid var(--ink)}
+thead th{background:var(--paper);font-family:var(--font-mono)}
+.study .title{font-family:var(--font-display);font-weight:400;font-size:1.35rem}
+a{text-decoration-thickness:1.5px}
+.read a:hover,.stack a:hover,p a:hover{background:var(--hl);color:var(--hl-ink)}
+.aboutme .portrait img{border-radius:0;border:1.5px solid var(--ink);box-shadow:10px 10px 0 var(--hl)}
+.credits{font-size:.86rem;color:var(--muted)}
+.credits a{color:inherit}
+
+/* Footer */
+footer.site{background:var(--ink);color:var(--paper);border-top:0}
+footer.site span{color:var(--paper)}
 </style>
 </head>
 <body>
-<header class="site">
+<svg class="ico-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.6"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.6 2.6M15.8 15.8l2.6 2.6M5.6 18.4l2.6-2.6M15.8 8.2l2.6-2.6"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5 13.5 13.5 8.5 15.5 10.5 10.5z"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="7.5" r="1.4"/></symbol>
+  <symbol id="i-seed" viewBox="0 0 24 24"><path d="M12 21v-9M12 12C12 7 8.5 4 4 4c0 5 3.5 8 8 8zM12 14.5c0-4 3-7.5 8-7.5 0 4.5-3 7.5-8 7.5z"/></symbol>
+  <symbol id="i-books" viewBox="0 0 24 24"><path d="M4 4h4v16H4zM10 4h4v16h-4zM16 5.2l3.4-.9 3 15.4-3.4.9z"/></symbol>
+  <symbol id="i-lens" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></symbol>
+  <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></symbol>
+</svg><header class="site">
   <div class="wrap bar">
     <a class="brand" href="#home" aria-label="Proof and Wonder, home">
-      <b>Proof and Wonder</b>
+      <b>Proof <em>and</em> Wonder</b>
     </a>
     <nav class="main" aria-label="Sections">
-      <a href="#disruption">The Third Disruption</a>
-      <a href="#topics">Topics</a>
-      <a href="#library">Library</a>
-      <a href="#method">Method</a>
-      <a href="#about">About</a>
+      <a href="#disruption"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-bolt"/></svg>The Third Disruption</a>
+      <a href="#topics"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-compass"/></svg>Topics</a>
+      <a href="#library"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-books"/></svg>Library</a>
+      <a href="#method"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-lens"/></svg>Method</a>
+      <a href="#about"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-person"/></svg>About</a>
     </nav>
   </div>
 </header>
@@ -340,15 +462,17 @@ main.wrap{padding-top:20px;padding-bottom:64px}
 
 <!-- ============ HOME ============ -->
 <section class="view" id="view-home" data-view="home">
-  <div class="hero">
+  <div class="hero has-art">
     <p class="kicker">A review of how AI shapes market research, marketing communications, and more</p>
     <h1>What does the evidence actually say about AI and audiences?</h1>
     <p class="lede">This site reviews the published research on AI and audiences for insights and marketing communications leaders. It doesn't run new studies. Instead, it reads the ones that exist, grades how much weight each can bear and translates the findings into positions you can act on, organized around three questions, with a fourth topic now in development.</p>
+    <figure class="art" style="--pos:50% 50%"><img src="images/cognitive-cosmos.webp" alt="A network diagram of many small emojis, organised in colourful clusters." width="1600" height="1502" loading="lazy" decoding="async"><figcaption><a href="https://betterimagesofai.org/images?artist=FabrizioMatarese&amp;title=CognitiveCosmosandMindMaps" target="_blank" rel="noopener">Cognitive Cosmos and Mind Maps</a> · Fabrizio Matarese · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></figcaption></figure>
   </div>
 
-  <div class="qgrid q3">
-    <article class="qcard">
-      <span class="eyebrow">1 · AI in Consumer Research</span>
+  <div class="qgrid q3 with-art">
+    <article class="qcard c-now">
+      <figure class="art" style="--pos:50% 50%"><img src="images/categorize.webp" alt="A digital collage of electronic waste, hillside settlements, terraced farmland and a textile pattern, overlaid with yellow bounding boxes and labels." width="1600" height="900" loading="lazy" decoding="async"><figcaption><a href="https://betterimagesofai.org/images?artist=PaulineWee&amp;title=Categorize" target="_blank" rel="noopener">Categorize</a> · Pauline Wee &amp; DAIR · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></figcaption></figure>
+      <span class="eyebrow"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-spark"/></svg>1 · AI in Consumer Research</span>
       <p class="q">Can I trust AI to help me understand my audience?</p>
       <div class="verdict stack" style="gap:6px">
         <span class="tag assess">Our take</span>
@@ -358,8 +482,9 @@ main.wrap{padding-top:20px;padding-bottom:64px}
       </div>
       <a class="cta" href="#research">See the evidence by level of detail <span class="arw" aria-hidden="true">→</span></a>
     </article>
-    <article class="qcard">
-      <span class="eyebrow">2 · Reactions to AI Disclosure</span>
+    <article class="qcard c-disc">
+      <figure class="art" style="--pos:14% 50%"><img src="images/not-a-game.webp" alt="A split image with a Rubik&rsquo;s cube beside the small &ldquo;cr&rdquo; icon used to label AI-generated images, against a background of discarded electronics." width="1600" height="481" loading="lazy" decoding="async"><figcaption><a href="https://betterimagesofai.org/images?artist=LauraSofiaMartinezAgudelo&amp;title=Thisisnota(i)game!" target="_blank" rel="noopener">This is not a(i) game!</a> · Laura Sofia Martinez Agudelo · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></figcaption></figure>
+      <span class="eyebrow"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-tag"/></svg>2 · Reactions to AI Disclosure</span>
       <p class="q">How will my audience respond when they know AI was involved?</p>
       <div class="verdict stack" style="gap:6px">
         <span class="tag assess">Our take</span>
@@ -369,8 +494,9 @@ main.wrap{padding-top:20px;padding-bottom:64px}
       </div>
       <a class="cta" href="#disclosure">See what changes the size of the drop <span class="arw" aria-hidden="true">→</span></a>
     </article>
-    <article class="qcard">
-      <span class="eyebrow">3 · Industry History</span>
+    <article class="qcard c-then">
+      <figure class="art" style="--pos:50% 40%"><img src="images/new-and-unprecedented.webp" alt="An illustration of two older women laughing together at a museum of technology, beside an antique telephone on display." width="1600" height="900" loading="lazy" decoding="async"><figcaption><a href="https://betterimagesofai.org/images?artist=AdaJu%C5%A1i%C4%87&amp;title=Newandunprecedented,isit?" target="_blank" rel="noopener">New and unprecedented, is it?</a> · Ada Jušić &amp; Eleonora Lima (KCL) · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></figcaption></figure>
+      <span class="eyebrow"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>3 · Industry History</span>
       <p class="q">Has research been through a change like this before?</p>
       <div class="verdict stack" style="gap:6px">
         <span class="tag assess">Our take</span>
@@ -386,6 +512,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
   <div class="devstrip">
     <span class="eyebrow">In development · A new topic, evidence to come</span>
     <a class="devcard" href="#growing-up">
+      <figure class="art c-grow" style="--pos:50% 38%"><img src="images/exploring-ai.webp" alt="A grid of square tiles with minimalist figures climbing, pushing and leaning on the dark green letters of the phrase &ldquo;Hi, I am AI&rdquo; against a yellow background." width="1200" height="1697" loading="lazy" decoding="async"><figcaption>Exploring AI · Yutong Liu &amp; Kingston School of Art · CC BY 4.0</figcaption></figure>
       <span class="devtag">Preview</span>
       <span class="devtitle">Growing Up in a World Where Every Question Has an Answer</span>
       <span class="devsum">What happens when children can explore a world of knowledge before they can read? An emerging project on childhood, culture and the future of learning.</span>
@@ -418,14 +545,16 @@ main.wrap{padding-top:20px;padding-bottom:64px}
 
 <!-- ============ THE THIRD DISRUPTION (HUB) ============ -->
 <section class="view" id="view-disruption" data-view="disruption">
-  <div class="hero">
-    <span class="eyebrow">The Third Disruption · AI in consumer research, now and then</span>
+  <div class="hero has-art">
+    <span class="eyebrow"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-bolt"/></svg>The Third Disruption · AI in consumer research, now and then</span>
     <h1>The telephone and the internet each remade consumer research. AI is the third disruption.</h1>
     <p class="lede">The first two changed how researchers reached people. AI is the first that can also generate the answers. This section weighs what AI can do in consumer research today against what the last two disruptions predict.</p>
+    <figure class="art c-then" style="--pos:45% 50%"><img src="images/new-and-unprecedented.webp" alt="An illustration of two older women laughing together at a museum of technology, beside an antique telephone on display." width="1600" height="900" loading="lazy" decoding="async"><figcaption><a href="https://betterimagesofai.org/images?artist=AdaJu%C5%A1i%C4%87&amp;title=Newandunprecedented,isit?" target="_blank" rel="noopener">New and unprecedented, is it?</a> · Ada Jušić &amp; Eleonora Lima (KCL) · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></figcaption></figure>
   </div>
-  <div class="qgrid hub2">
-    <article class="qcard">
-      <span class="eyebrow">Now · AI in Consumer Research · <span data-count="research">26</span> studies</span>
+  <div class="qgrid hub2 with-art">
+    <article class="qcard c-now">
+      <figure class="art" style="--pos:50% 50%"><img src="images/categorize.webp" alt="A digital collage of electronic waste, hillside settlements, terraced farmland and a textile pattern, overlaid with yellow bounding boxes and labels." width="1600" height="900" loading="lazy" decoding="async"><figcaption><a href="https://betterimagesofai.org/images?artist=PaulineWee&amp;title=Categorize" target="_blank" rel="noopener">Categorize</a> · Pauline Wee &amp; DAIR · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></figcaption></figure>
+      <span class="eyebrow"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-spark"/></svg>Now · AI in Consumer Research · <span data-count="research">26</span> studies</span>
       <p class="q">Can I trust AI to help me understand my audience?</p>
       <div class="verdict stack" style="gap:6px">
         <span class="tag assess">Our take</span>
@@ -435,8 +564,9 @@ main.wrap{padding-top:20px;padding-bottom:64px}
       </div>
       <a class="cta" href="#research">See the evidence by level of detail <span class="arw" aria-hidden="true">→</span></a>
     </article>
-    <article class="qcard">
-      <span class="eyebrow">Then · Industry History</span>
+    <article class="qcard c-then">
+      <figure class="art" style="--pos:50% 40%"><img src="images/new-and-unprecedented.webp" alt="An illustration of two older women laughing together at a museum of technology, beside an antique telephone on display." width="1600" height="900" loading="lazy" decoding="async"><figcaption><a href="https://betterimagesofai.org/images?artist=AdaJu%C5%A1i%C4%87&amp;title=Newandunprecedented,isit?" target="_blank" rel="noopener">New and unprecedented, is it?</a> · Ada Jušić &amp; Eleonora Lima (KCL) · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></figcaption></figure>
+      <span class="eyebrow"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>Then · Industry History</span>
       <p class="q">What do the telephone and internet eras predict for AI?</p>
       <div class="verdict stack" style="gap:6px">
         <span class="tag assess">Our take</span>
@@ -450,14 +580,16 @@ main.wrap{padding-top:20px;padding-bottom:64px}
 
 <!-- ============ TOPICS (HUB) ============ -->
 <section class="view" id="view-topics" data-view="topics">
-  <div class="hero">
-    <span class="eyebrow">Topics</span>
+  <div class="hero has-art">
+    <span class="eyebrow"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-compass"/></svg>Topics</span>
     <h1>Focused questions about how people respond, learn and trust as AI spreads</h1>
     <p class="lede">Each topic follows one question through the evidence. Topics with enough research get graded studies and verdicts. Newer ones start as previews and fill in as the evidence comes together.</p>
+    <figure class="art diptych"><div class="c-disc" style="--pos:14% 50%"><img src="images/not-a-game.webp" alt="A split image with a Rubik&rsquo;s cube beside the small &ldquo;cr&rdquo; icon used to label AI-generated images, against a background of discarded electronics." width="1600" height="481" loading="lazy" decoding="async"></div><div class="c-grow" style="--pos:50% 38%"><img src="images/exploring-ai.webp" alt="A grid of square tiles with minimalist figures climbing, pushing and leaning on the dark green letters of the phrase &ldquo;Hi, I am AI&rdquo; against a yellow background." width="1200" height="1697" loading="lazy" decoding="async"></div><figcaption>Left: <a href="https://betterimagesofai.org/images?artist=LauraSofiaMartinezAgudelo&amp;title=Thisisnota(i)game!" target="_blank" rel="noopener">This is not a(i) game!</a> · Laura Sofia Martinez Agudelo. Right: <a href="https://betterimagesofai.org/images?artist=YutongLiu&amp;title=ExploringAI" target="_blank" rel="noopener">Exploring AI</a> · Yutong Liu &amp; Kingston School of Art · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></figcaption></figure>
   </div>
-  <div class="qgrid hub2">
-    <article class="qcard">
-      <span class="eyebrow">Reactions to AI Disclosure · <span data-count="disclosure">26</span> studies</span>
+  <div class="qgrid hub2 with-art">
+    <article class="qcard c-disc">
+      <figure class="art" style="--pos:14% 50%"><img src="images/not-a-game.webp" alt="A split image with a Rubik&rsquo;s cube beside the small &ldquo;cr&rdquo; icon used to label AI-generated images, against a background of discarded electronics." width="1600" height="481" loading="lazy" decoding="async"><figcaption><a href="https://betterimagesofai.org/images?artist=LauraSofiaMartinezAgudelo&amp;title=Thisisnota(i)game!" target="_blank" rel="noopener">This is not a(i) game!</a> · Laura Sofia Martinez Agudelo · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></figcaption></figure>
+      <span class="eyebrow"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-tag"/></svg>Reactions to AI Disclosure · <span data-count="disclosure">26</span> studies</span>
       <p class="q">How will my audience respond when they know AI was involved?</p>
       <div class="verdict stack" style="gap:6px">
         <span class="tag assess">Our take</span>
@@ -466,8 +598,9 @@ main.wrap{padding-top:20px;padding-bottom:64px}
       </div>
       <a class="cta" href="#disclosure">See what changes the size of the drop <span class="arw" aria-hidden="true">→</span></a>
     </article>
-    <article class="qcard preview">
-      <span class="eyebrow">Growing Up · Preview</span>
+    <article class="qcard preview c-grow">
+      <figure class="art" style="--pos:50% 38%"><img src="images/exploring-ai.webp" alt="A grid of square tiles with minimalist figures climbing, pushing and leaning on the dark green letters of the phrase &ldquo;Hi, I am AI&rdquo; against a yellow background." width="1200" height="1697" loading="lazy" decoding="async"><figcaption><a href="https://betterimagesofai.org/images?artist=YutongLiu&amp;title=ExploringAI" target="_blank" rel="noopener">Exploring AI</a> · Yutong Liu &amp; Kingston School of Art · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></figcaption></figure>
+      <span class="eyebrow"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-seed"/></svg>Growing Up · Preview</span>
       <p class="q">What happens when children can explore a world of knowledge before they can read?</p>
       <div class="stack" style="gap:6px">
         <span class="tag open">In development</span>
@@ -481,11 +614,12 @@ main.wrap{padding-top:20px;padding-bottom:64px}
 
 <!-- ============ RESEARCH ============ -->
 <section class="view" id="view-research" data-view="research">
-  <nav class="subnav" aria-label="The Third Disruption"><a class="subnav-hub" href="#disruption">The Third Disruption</a><span class="subnav-sep" aria-hidden="true">/</span><a href="#research">Now: AI in Consumer Research</a><a href="#history">Then: Industry History</a></nav>
-  <div class="hero">
-    <span class="eyebrow">Now · AI in Consumer Research · <span data-count="research">26</span> studies</span>
+  <nav class="subnav" aria-label="The Third Disruption"><a class="subnav-hub" href="#disruption"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-bolt"/></svg>The Third Disruption</a><span class="subnav-sep" aria-hidden="true">/</span><a href="#research"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-spark"/></svg>Now: AI in Consumer Research</a><a href="#history"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>Then: Industry History</a></nav>
+  <div class="hero has-art">
+    <span class="eyebrow"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-spark"/></svg>Now · AI in Consumer Research · <span data-count="research">26</span> studies</span>
     <h1>AI can read your audience's words. It can't yet stand in for your audience.</h1>
     <p class="lede"><strong>Key question:</strong> Can I trust AI to help me understand my audience?</p>
+    <figure class="art c-now" style="--pos:50% 50%"><img src="images/categorize.webp" alt="A digital collage of electronic waste, hillside settlements, terraced farmland and a textile pattern, overlaid with yellow bounding boxes and labels." width="1600" height="900" loading="lazy" decoding="async"><figcaption><a href="https://betterimagesofai.org/images?artist=PaulineWee&amp;title=Categorize" target="_blank" rel="noopener">Categorize</a> · Pauline Wee &amp; DAIR · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></figcaption></figure>
   </div>
 
   <div class="block two">
@@ -605,11 +739,12 @@ main.wrap{padding-top:20px;padding-bottom:64px}
 
 <!-- ============ DISCLOSURE ============ -->
 <section class="view" id="view-disclosure" data-view="disclosure">
-  <nav class="subnav" aria-label="Topics"><a class="subnav-hub" href="#topics">Topics</a><span class="subnav-sep" aria-hidden="true">/</span><a href="#disclosure">AI Disclosure</a><a href="#growing-up">Growing Up <span class="devpill sm">Preview</span></a></nav>
-  <div class="hero">
-    <span class="eyebrow">Topic · Reactions to AI Disclosure · <span data-count="disclosure">26</span> studies</span>
+  <nav class="subnav" aria-label="Topics"><a class="subnav-hub" href="#topics"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-compass"/></svg>Topics</a><span class="subnav-sep" aria-hidden="true">/</span><a href="#disclosure"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-tag"/></svg>AI Disclosure</a><a href="#growing-up"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-seed"/></svg>Growing Up <span class="devpill sm">Preview</span></a></nav>
+  <div class="hero has-art">
+    <span class="eyebrow"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-tag"/></svg>Topic · Reactions to AI Disclosure · <span data-count="disclosure">26</span> studies</span>
     <h1>Disclosure usually costs trust, but how you disclose decides how much.</h1>
     <p class="lede"><strong>Key question:</strong> How will my audience respond when they know AI was involved?</p>
+    <figure class="art c-disc" style="--pos:16% 50%"><img src="images/not-a-game.webp" alt="A split image with a Rubik&rsquo;s cube beside the small &ldquo;cr&rdquo; icon used to label AI-generated images, against a background of discarded electronics." width="1600" height="481" loading="lazy" decoding="async"><figcaption><a href="https://betterimagesofai.org/images?artist=LauraSofiaMartinezAgudelo&amp;title=Thisisnota(i)game!" target="_blank" rel="noopener">This is not a(i) game!</a> · Laura Sofia Martinez Agudelo · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></figcaption></figure>
   </div>
 
   <div class="block two">
@@ -726,11 +861,12 @@ main.wrap{padding-top:20px;padding-bottom:64px}
 
 <!-- ============ HISTORY ============ -->
 <section class="view" id="view-history" data-view="history">
-  <nav class="subnav" aria-label="The Third Disruption"><a class="subnav-hub" href="#disruption">The Third Disruption</a><span class="subnav-sep" aria-hidden="true">/</span><a href="#research">Now: AI in Consumer Research</a><a href="#history">Then: Industry History</a></nav>
-  <div class="hero">
-    <span class="eyebrow">Industry history · Market and consumer research</span>
+  <nav class="subnav" aria-label="The Third Disruption"><a class="subnav-hub" href="#disruption"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-bolt"/></svg>The Third Disruption</a><span class="subnav-sep" aria-hidden="true">/</span><a href="#research"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-spark"/></svg>Now: AI in Consumer Research</a><a href="#history"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>Then: Industry History</a></nav>
+  <div class="hero has-art">
+    <span class="eyebrow"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>Industry history · Market and consumer research</span>
     <h1>Research has been disrupted twice before, and the pattern is instructive.</h1>
     <p class="lede"><strong>Key question:</strong> What do the telephone and internet eras predict for AI?</p>
+    <figure class="art c-then" style="--pos:45% 50%"><img src="images/new-and-unprecedented.webp" alt="An illustration of two older women laughing together at a museum of technology, beside an antique telephone on display." width="1600" height="900" loading="lazy" decoding="async"><figcaption><a href="https://betterimagesofai.org/images?artist=AdaJu%C5%A1i%C4%87&amp;title=Newandunprecedented,isit?" target="_blank" rel="noopener">New and unprecedented, is it?</a> · Ada Jušić &amp; Eleonora Lima (KCL) · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></figcaption></figure>
   </div>
 
   <div class="block callout stack read" style="max-width:none">
@@ -902,10 +1038,11 @@ main.wrap{padding-top:20px;padding-bottom:64px}
 
 <!-- ============ GROWING UP (PREVIEW) ============ -->
 <section class="view" id="view-growing-up" data-view="growing-up">
-  <nav class="subnav" aria-label="Topics"><a class="subnav-hub" href="#topics">Topics</a><span class="subnav-sep" aria-hidden="true">/</span><a href="#disclosure">AI Disclosure</a><a href="#growing-up">Growing Up <span class="devpill sm">Preview</span></a></nav>
-  <div class="hero">
-    <span class="eyebrow"><span class="devpill">In development</span> Childhood, Culture &amp; the Future of Learning</span>
+  <nav class="subnav" aria-label="Topics"><a class="subnav-hub" href="#topics"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-compass"/></svg>Topics</a><span class="subnav-sep" aria-hidden="true">/</span><a href="#disclosure"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-tag"/></svg>AI Disclosure</a><a href="#growing-up"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-seed"/></svg>Growing Up <span class="devpill sm">Preview</span></a></nav>
+  <div class="hero has-art">
+    <span class="eyebrow"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-seed"/></svg><span class="devpill">In development</span> Childhood, Culture &amp; the Future of Learning</span>
     <h1>Growing Up in a World Where Every Question Has an Answer</h1>
+    <figure class="art c-grow" style="--pos:50% 40%"><img src="images/exploring-ai.webp" alt="A grid of square tiles with minimalist figures climbing, pushing and leaning on the dark green letters of the phrase &ldquo;Hi, I am AI&rdquo; against a yellow background." width="1200" height="1697" loading="lazy" decoding="async"><figcaption><a href="https://betterimagesofai.org/images?artist=YutongLiu&amp;title=ExploringAI" target="_blank" rel="noopener">Exploring AI</a> · Yutong Liu &amp; Kingston School of Art · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></figcaption></figure>
   </div>
 
   <div class="block stack read">
@@ -938,7 +1075,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
 <!-- ============ LIBRARY ============ -->
 <section class="view" id="view-library" data-view="library">
   <div class="hero">
-    <span class="eyebrow">Study library</span>
+    <span class="eyebrow"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-books"/></svg>Study library</span>
     <h1>All <span data-count="all">52</span> studies, graded</h1>
     <p class="lede">Filter by collection, evidence grade or study design. Each card summarizes what the study found and how much weight we think it can bear.</p>
   </div>
@@ -961,10 +1098,11 @@ main.wrap{padding-top:20px;padding-bottom:64px}
 
 <!-- ============ METHOD ============ -->
 <section class="view" id="view-method" data-view="method">
-  <div class="hero">
-    <span class="eyebrow">Method</span>
+  <div class="hero has-art">
+    <span class="eyebrow"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-lens"/></svg>Method</span>
     <h1>How we select, grade and summarize the studies</h1>
     <p class="lede">A single rubric governs both collections, so a reader who disagrees with a verdict can see exactly which studies it rests on and how each was weighed.</p>
+    <figure class="art c-hl" style="--pos:50% 50%"><img src="images/safety-precautions.webp" alt="An illustration of a researcher programming at a computer, and the same researcher wearing safety equipment." width="1600" height="900" loading="lazy" decoding="async"><figcaption><a href="https://betterimagesofai.org/images?artist=YasminDwiputri&amp;title=SafetyPrecautions" target="_blank" rel="noopener">Safety Precautions</a> · Yasmin Dwiputri &amp; Data Hazards Project · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></figcaption></figure>
   </div>
 
   <div class="block two">
@@ -1051,12 +1189,24 @@ main.wrap{padding-top:20px;padding-bottom:64px}
       </ul>
     </div>
   </div>
+  <div class="block panel">
+    <h3>Picture credits</h3>
+    <p class="credits">Illustrations are by artists from <a href="https://betterimagesofai.org" target="_blank" rel="noopener">Better Images of AI</a>, a non-profit library of images that represent AI more accurately, used under a Creative Commons Attribution 4.0 licence. Some are cropped to fit.</p>
+    <ul class="clean credits" style="margin-top:10px">
+      <li><a href="https://betterimagesofai.org/images?artist=FabrizioMatarese&amp;title=CognitiveCosmosandMindMaps" target="_blank" rel="noopener">Cognitive Cosmos and Mind Maps</a> by Fabrizio Matarese · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Licenced by CC-BY 4.0</a></li>
+      <li><a href="https://betterimagesofai.org/images?artist=PaulineWee&amp;title=Categorize" target="_blank" rel="noopener">Categorize</a> by Pauline Wee &amp; DAIR · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Licenced by CC-BY 4.0</a></li>
+      <li><a href="https://betterimagesofai.org/images?artist=AdaJu%C5%A1i%C4%87&amp;title=Newandunprecedented,isit?" target="_blank" rel="noopener">New and unprecedented, is it?</a> by Ada Jušić &amp; Eleonora Lima (KCL) · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Licenced by CC-BY 4.0</a></li>
+      <li><a href="https://betterimagesofai.org/images?artist=LauraSofiaMartinezAgudelo&amp;title=Thisisnota(i)game!" target="_blank" rel="noopener">This is not a(i) game!</a> by Laura Sofia Martinez Agudelo · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Licenced by CC-BY 4.0</a></li>
+      <li><a href="https://betterimagesofai.org/images?artist=YutongLiu&amp;title=ExploringAI" target="_blank" rel="noopener">Exploring AI</a> by Yutong Liu &amp; Kingston School of Art · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Licenced by CC-BY 4.0</a></li>
+      <li><a href="https://betterimagesofai.org/images?artist=YasminDwiputri&amp;title=SafetyPrecautions" target="_blank" rel="noopener">Safety Precautions</a> by Yasmin Dwiputri &amp; Data Hazards Project · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Licenced by CC-BY 4.0</a></li>
+    </ul>
+  </div>
 </section>
 
 <!-- ============ ABOUT ============ -->
 <section class="view" id="view-about" data-view="about">
   <div class="hero">
-    <span class="eyebrow">About</span>
+    <span class="eyebrow"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-person"/></svg>About</span>
     <h1>A researcher's way through the AI noise</h1>
   </div>
   <div class="block stack read">
@@ -1085,7 +1235,7 @@ main.wrap{padding-top:20px;padding-bottom:64px}
 
 <footer class="site">
   <div class="wrap row">
-    <span>Proof and Wonder · Version 1.6 · <span data-count="all">52</span> studies · Updated November 2026</span>
+    <span>Proof and Wonder · Version 1.7 · <span data-count="all">52</span> studies · Updated November 2026</span>
     <span>By Zhaowen Wu</span>
   </div>
 </footer>

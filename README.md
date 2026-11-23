@@ -19,6 +19,8 @@ By Zhaowen Wu · [LinkedIn](https://www.linkedin.com/in/zhaowenwu/) · [proofand
 
 ## Files
 
-- `index.html`: The complete site. One self-contained HTML file with inline CSS and JavaScript. Open it in a browser.
+- `index.html`: The complete site. One HTML file with inline CSS and JavaScript. Open it in a browser.
+- `images/`: Illustrations from [Better Images of AI](https://betterimagesofai.org), used under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Each is credited on the image and in the Method page's picture credits.
+- `zhaowen-wu.jpg`: Portrait on the About page.
 
-Version 1.6 · November 2026
+Version 1.7 · November 2026
