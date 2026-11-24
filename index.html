@@ -445,6 +445,31 @@ a{text-decoration-thickness:1.5px}
 .aboutme .portrait img{border-radius:0;border:1.5px solid var(--ink);box-shadow:10px 10px 0 var(--hl)}
 .flag{white-space:normal;max-width:100%}
 .credits{font-size:.86rem;color:var(--muted)}
+
+/* Contact: About page card and footer pills */
+.contact-card{margin-top:10px;border:1.5px solid var(--ink);background:var(--surface);padding:20px 22px;box-shadow:8px 8px 0 var(--hl)}
+.contact-card h3{font-family:var(--font-display);font-weight:400;font-size:1.65rem;letter-spacing:-.01em;margin:0 0 6px}
+.contact-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.cbtn{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border:1.5px solid var(--ink);background:var(--surface);color:var(--ink);font:600 .95rem/1.1 var(--font-body);text-decoration:none;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,background-color .15s ease,color .15s ease}
+.cbtn .ico{margin-right:0}
+.cbtn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+.cbtn:active{transform:none;box-shadow:none}
+.cbtn:focus-visible,.fbtn:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.contact-actions .cbtn-mail{background:var(--ink);color:var(--paper)}
+.contact-actions .cbtn-mail:hover{background:var(--hl);color:var(--hl-ink)}
+.contact-actions .cbtn-copy:hover{background:var(--hl);color:var(--hl-ink)}
+.contact-actions .cbtn-li,.contact-actions .cbtn-li:hover{background:#0A66C2;color:#fff;border-color:#0A66C2}
+.contact-actions .cbtn-li:hover{background:#004182;border-color:#004182}
+.li-logo{width:1.3em;height:1.3em;flex:none}
+.contact-note{font-size:.86rem;color:var(--muted);min-height:1.3em;margin-top:10px}
+.foot-contact{display:inline-flex;align-items:center;flex-wrap:wrap;gap:10px}
+.fbtn{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;font:600 .82rem/1 var(--font-body);text-decoration:none;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
+.fbtn .ico{margin-right:0;width:1.1em;height:1.1em}
+.fbtn .li-logo{width:1.15em;height:1.15em}
+footer.site .fbtn-mail{background:var(--paper);color:var(--ink)}
+footer.site .fbtn-li{background:#0A66C2;color:#fff}
+.fbtn:hover{transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--hl)}
+@media (prefers-reduced-motion: reduce){.cbtn:hover,.fbtn:hover{transform:none}}
 .credits a{color:inherit}
 
 /* Footer */
@@ -463,6 +488,10 @@ footer.site span{color:var(--paper)}
   <symbol id="i-books" viewBox="0 0 24 24"><path d="M4 4h4v16H4zM10 4h4v16h-4zM16 5.2l3.4-.9 3 15.4-3.4.9z"/></symbol>
   <symbol id="i-lens" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></symbol>
   <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="m3.5 7 8.5 6 8.5-6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="1.5"/><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3.5" fill="#fff"/><g fill="#0A66C2"><rect x="5.6" y="9.6" width="3" height="8.9"/><circle cx="7.1" cy="6.6" r="1.8"/><path d="M10.6 9.6h2.85v1.25c.45-.85 1.55-1.45 2.85-1.45 2.3 0 3.2 1.4 3.2 3.9v5.2h-2.95v-4.6c0-1.15-.3-1.95-1.4-1.95-1.1 0-1.6.8-1.6 1.95v4.6h-2.95z"/></g></symbol>
 </svg><header class="site">
   <div class="wrap bar">
     <a class="brand" href="#home" aria-label="Proof and Wonder, home">
@@ -1242,7 +1271,16 @@ footer.site span{color:var(--paper)}
     <p>I started this site because I wanted clear answers to the same questions my peers were asking, and I couldn't find them in one place.</p>
     <p>No funder or sponsor, just my own time. I don't offer synthetic respondents, survey panels or AI research tools, so I have no stake in any verdict except getting it right.</p>
     <p>I hope you enjoy reading and exploring the site as much as I've enjoyed building it.</p>
-    <p>Have an idea or a suggestion? I'd be glad to hear it. Get in touch on <a href="https://www.linkedin.com/in/zhaowenwu/" target="_blank" rel="noopener">LinkedIn ↗</a>.</p>
+    <div class="contact-card" id="contact">
+      <h3>Get in touch</h3>
+      <p>Have an idea, a study I should add, or a project in mind? I'd be glad to hear from you.</p>
+      <div class="contact-actions">
+        <a class="cbtn cbtn-mail" data-u="zw" data-d="zetaimpact.com" href="#about"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg><span class="cbtn-text">Email me</span></a>
+        <button type="button" class="cbtn cbtn-copy" data-u="zw" data-d="zetaimpact.com"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-copy"/></svg><span class="cbtn-text">Copy email</span></button>
+        <a class="cbtn cbtn-li" href="https://www.linkedin.com/in/zhaowenwu/" target="_blank" rel="noopener" aria-label="Zhaowen Wu on LinkedIn (opens in a new tab)"><svg class="li-logo" aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg><span>LinkedIn</span><svg class="ico ico-out" aria-hidden="true" focusable="false"><use href="#i-out"/></svg></a>
+      </div>
+      <p class="contact-note" aria-live="polite"></p>
+    </div>
     </div>
   </div>
 </section>
@@ -1252,7 +1290,10 @@ footer.site span{color:var(--paper)}
 <footer class="site">
   <div class="wrap row">
     <span>Proof and Wonder · Version 1.7 · <span data-count="all">52</span> studies · Updated November 2026</span>
-    <span>By Zhaowen Wu</span>
+    <span class="foot-contact">By Zhaowen Wu
+      <a class="fbtn fbtn-mail" data-u="zw" data-d="zetaimpact.com" href="#about" aria-label="Email Zhaowen Wu"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg>Email</a>
+      <a class="fbtn fbtn-li" href="https://www.linkedin.com/in/zhaowenwu/" target="_blank" rel="noopener" aria-label="Zhaowen Wu on LinkedIn (opens in a new tab)"><svg class="li-logo" aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg>LinkedIn</a>
+    </span>
   </div>
 </footer>
 
@@ -1831,6 +1872,26 @@ function route(){
 }
 window.addEventListener("hashchange",route);
 route();
+
+/* Contact links: the address is assembled here rather than written in the page, to deter simple scrapers */
+document.querySelectorAll("[data-u][data-d]").forEach(el=>{
+  const email=el.dataset.u+"@"+el.dataset.d;
+  if(el.tagName==="A"){el.href="mailto:"+email+"?subject="+encodeURIComponent("Proof and Wonder");}
+  if(el.classList.contains("cbtn-mail")){el.querySelector(".cbtn-text").textContent=email;el.setAttribute("aria-label","Email "+email);}
+  if(el.classList.contains("cbtn-copy")){
+    const label=el.querySelector(".cbtn-text"),note=document.querySelector(".contact-note");
+    el.addEventListener("click",async()=>{
+      let ok=false;
+      try{await navigator.clipboard.writeText(email);ok=true;}catch(e){
+        const t=document.createElement("textarea");t.value=email;t.setAttribute("readonly","");t.style.position="absolute";t.style.left="-9999px";document.body.appendChild(t);t.select();
+        try{ok=document.execCommand("copy");}catch(_){ok=false;}t.remove();
+      }
+      label.textContent=ok?"Copied":"Copy email";
+      if(note)note.textContent=ok?"Email address copied: "+email:"Couldn't copy automatically. The address is "+email;
+      setTimeout(()=>{label.textContent="Copy email";},2200);
+    });
+  }
+});
 
 </script>
 </body>
