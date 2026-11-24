@@ -20,7 +20,7 @@ By Zhaowen Wu · [LinkedIn](https://www.linkedin.com/in/zhaowenwu/) · [proofand
 ## Files
 
 - `index.html`: The complete site. One HTML file with inline CSS and JavaScript. Open it in a browser.
-- `images/`: Illustrations from [Better Images of AI](https://betterimagesofai.org), used under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Each is credited on the image and in the picture credits on the Library page.
+- `images/`: Illustrations from [Better Images of AI](https://betterimagesofai.org), used under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Each is credited on the image and in the picture credits on the Library page. `images/social-card.png` is the 1200×630 link-preview image used by social media and messaging apps.
 - `zhaowen-wu.jpg`: Portrait on the About page.
 
 Version 1.7 · November 2026
